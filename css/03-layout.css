@@ -1,0 +1,249 @@
+/* ============================================================================
+   03 · LAYOUT
+   Container, ritmo de seção, barra de navegação e rodapé.
+   Depende de 01-tokens e 02-base. Não conhece componente nem seção específica.
+   ============================================================================ */
+
+/* ── Container ─────────────────────────────────────────────────────────── */
+
+.wrap {
+  width: 100%;
+  max-width: var(--measure-container);
+  margin-inline: auto;
+  padding-inline: var(--measure-gutter);
+}
+
+/* ── Seção ─────────────────────────────────────────────────────────────── */
+
+.section {
+  border-top: 1px solid var(--rule);
+  padding-block: var(--space-12);
+}
+
+.section--flush {
+  border-top: 0;
+}
+
+/* Malha de pauta: alinhada às colunas reais do conteúdo, não textura solta. */
+.section--ledger {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--ledger) 0 1px,
+    transparent 1px 88px
+  );
+}
+
+.section__head {
+  display: grid;
+  gap: var(--space-3);
+  max-width: var(--measure-prose);
+  margin-bottom: var(--space-8);
+}
+
+.section__head p:last-child {
+  color: var(--text-secondary);
+  font-size: var(--size-lede);
+}
+
+/* ── Barra de navegação ────────────────────────────────────────────────── */
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: var(--layer-bar);
+  background: var(--surface-page);
+  border-bottom: 1px solid var(--rule);
+}
+
+.bar__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  min-height: var(--measure-bar);
+}
+
+.bar__links {
+  display: flex;
+  gap: var(--space-5);
+  margin-left: auto;
+}
+
+.bar__links a {
+  color: var(--text-secondary);
+  font-size: var(--size-small);
+  font-weight: var(--weight-medium);
+  transition: color var(--duration-micro) var(--ease-micro);
+}
+
+.bar__links a:hover {
+  color: var(--text-primary);
+}
+
+.bar .bar__cta {
+  margin-left: var(--space-5);
+}
+
+/* Especificidade de 2 classes: .btn na camada 04 vem depois na cascata e
+   venceria um seletor de classe unica. */
+.bar .bar__toggle {
+  display: none;
+  margin-left: auto;
+}
+
+.bar__panel {
+  display: none;
+  border-top: 1px solid var(--rule);
+  padding-block: var(--space-4) var(--space-5);
+}
+
+.bar__panel[data-open="true"] {
+  display: block;
+}
+
+.bar__panel ul {
+  display: grid;
+}
+
+.bar__panel a {
+  display: flex;
+  align-items: center;
+  min-height: var(--measure-tap);
+  border-bottom: 1px solid var(--rule);
+  font-size: var(--size-subhead);
+  font-weight: var(--weight-medium);
+}
+
+.bar__panel__action {
+  margin-top: var(--space-4);
+}
+
+/* ── Marca ─────────────────────────────────────────────────────────────── */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-weight: var(--weight-black);
+  min-height: var(--measure-tap);
+  font-size: var(--size-subhead);
+  letter-spacing: var(--tracking-heading);
+}
+
+.brand__mark {
+  width: var(--space-6);
+  height: var(--space-6);
+  flex: none;
+}
+
+.brand__accent {
+  color: var(--accent);
+}
+
+/* ── Grades reutilizáveis ──────────────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* ── Rodapé ────────────────────────────────────────────────────────────── */
+
+.footer {
+  border-top: 1px solid var(--rule);
+  padding-block: var(--space-10) var(--space-6);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.footer__grid h3 {
+  margin-bottom: var(--space-3);
+  font-family: var(--font-label);
+  font-size: var(--size-label-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.footer__grid ul {
+  display: grid;
+}
+
+.footer__grid a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--measure-tap);
+  color: var(--text-secondary);
+  font-size: var(--size-small);
+  transition: color var(--duration-micro) var(--ease-micro);
+}
+
+.footer__grid a:hover {
+  color: var(--accent);
+}
+
+.footer__grid p {
+  color: var(--text-secondary);
+  font-size: var(--size-small);
+}
+
+.footer__end {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-label);
+  font-size: var(--size-label-sm);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+/* ── Adaptação de largura ──────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .bar__links,
+  .bar .bar__cta {
+    display: none;
+  }
+
+  .bar .bar__toggle {
+    display: inline-flex;
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .section {
+    padding-block: var(--space-10);
+  }
+
+  .section__head {
+    margin-bottom: var(--space-6);
+  }
+
+  .grid--3 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .footer__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

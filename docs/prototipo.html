@@ -1,0 +1,884 @@
+<title>404Devs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+/* ============================================================
+   01 · TOKENS  —  dark-first (doc 04)
+   ============================================================ */
+:root{
+  --bg:#0C0F16;
+  --surface:#141823;
+  --surface-2:#1B2130;
+  --border:#252B3A;
+  --border-strong:#39425A;
+  --text:#F0EDE6;
+  --text-muted:#A5A29A;
+  --text-subtle:#787670;
+  --accent:#E8A33D;
+  --accent-hover:#F6B658;
+  --accent-ink:#1A1206;
+  --accent-soft:rgba(232,163,61,.11);
+  --accent-line:rgba(232,163,61,.32);
+  --rule:rgba(240,237,230,.09);
+  --ledger:rgba(240,237,230,.035);
+  --shadow:0 12px 32px rgba(0,0,0,.45);
+
+  --f-display:"Bricolage Grotesque","Trebuchet MS",sans-serif;
+  --f-sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+
+  --s1:.25rem; --s2:.5rem;  --s3:.75rem; --s4:1rem;
+  --s5:1.5rem; --s6:2rem;   --s8:3rem;   --s10:4rem; --s12:6rem;
+  --r-sm:.5rem; --r-md:.75rem; --r-lg:1rem;
+  --wrap:1120px;
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#EAEEF4;
+    --border:#DBE1EA; --border-strong:#B4BECD;
+    --text:#111621; --text-muted:#525A6A; --text-subtle:#767F90;
+    --accent:#9A5E0B; --accent-hover:#7E4C06; --accent-ink:#FFFFFF;
+    --accent-soft:rgba(154,94,11,.09); --accent-line:rgba(154,94,11,.3);
+    --rule:rgba(17,22,33,.1); --ledger:rgba(17,22,33,.035);
+    --shadow:0 10px 28px rgba(17,22,33,.09);
+  }
+}
+:root[data-theme="light"]{
+  --bg:#F4F6F9; --surface:#FFFFFF; --surface-2:#EAEEF4;
+  --border:#DBE1EA; --border-strong:#B4BECD;
+  --text:#111621; --text-muted:#525A6A; --text-subtle:#767F90;
+  --accent:#9A5E0B; --accent-hover:#7E4C06; --accent-ink:#FFFFFF;
+  --accent-soft:rgba(154,94,11,.09); --accent-line:rgba(154,94,11,.3);
+  --rule:rgba(17,22,33,.1); --ledger:rgba(17,22,33,.035);
+  --shadow:0 10px 28px rgba(17,22,33,.09);
+}
+
+/* ============================================================
+   02 · BASE
+   ============================================================ */
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:var(--f-sans);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.08;letter-spacing:-.02em}
+p{margin:0}
+a{color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--s5)}
+.mono{font-family:var(--f-mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase}
+.eyebrow{font-family:var(--f-mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+
+/* placeholder das pendências do doc 05 */
+.todo{
+  display:inline-block;font-family:var(--f-mono);font-size:.625rem;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--accent);background:var(--accent-soft);
+  border:1px dashed var(--accent-line);border-radius:4px;padding:.15em .5em;
+  vertical-align:middle;
+}
+
+/* ============================================================
+   03 · BARRA DE PROTÓTIPO
+   ============================================================ */
+.proto{
+  background:var(--surface-2);border-bottom:1px solid var(--border);
+  font-family:var(--f-mono);font-size:.6875rem;letter-spacing:.06em;
+  color:var(--text-muted);text-align:center;padding:.55rem var(--s4);
+}
+.proto b{color:var(--accent);font-weight:500}
+
+/* ============================================================
+   04 · NAVBAR
+   ============================================================ */
+.nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--rule)}
+.nav-row{display:flex;align-items:center;gap:var(--s5);min-height:64px}
+.brand{display:flex;align-items:baseline;gap:.4rem;text-decoration:none;font-family:var(--f-display);font-weight:800;font-size:1.0625rem;letter-spacing:-.01em}
+.brand i{font-style:normal;color:var(--accent)}
+.nav-links{display:flex;gap:var(--s5);margin-left:auto;list-style:none;padding:0;margin-block:0}
+.nav-links a{text-decoration:none;color:var(--text-muted);font-size:.9375rem;font-weight:500;transition:color .16s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{margin-left:var(--s5)}
+.burger{display:none;margin-left:auto;align-items:center;gap:.4rem;background:none;border:1px solid var(--border);
+  color:var(--text);border-radius:var(--r-sm);padding:.5rem .7rem;min-height:44px;cursor:pointer;
+  font-family:var(--f-mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase}
+.panel{display:none;border-top:1px solid var(--rule);padding:var(--s4) 0 var(--s5)}
+.panel[data-open="true"]{display:block}
+.panel ul{list-style:none;margin:0;padding:0;display:grid;gap:var(--s1)}
+.panel a{display:block;text-decoration:none;padding:.7rem 0;font-size:1.0625rem;font-weight:500;border-bottom:1px solid var(--rule)}
+.panel .btn{margin-top:var(--s4);width:100%}
+
+/* ============================================================
+   05 · BOTÕES
+   ============================================================ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:44px;
+  padding:.7rem 1.15rem;border-radius:var(--r-md);text-decoration:none;font-weight:600;font-size:.9375rem;
+  border:1px solid transparent;cursor:pointer;transition:background .16s,border-color .16s,color .16s;font-family:var(--f-sans)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-ghost{border-color:var(--border-strong);color:var(--text)}
+.btn-ghost:hover{border-color:var(--text-muted)}
+
+/* ============================================================
+   06 · SEÇÕES
+   ============================================================ */
+section{border-top:1px solid var(--rule)}
+.sec{padding-block:var(--s12)}
+.sec-head{display:grid;gap:var(--s3);max-width:44rem;margin-bottom:var(--s8)}
+.sec-head h2{font-size:clamp(1.65rem,3.4vw,2.5rem);font-weight:700}
+.sec-head p{color:var(--text-muted);font-size:1.0625rem}
+
+/* ── Hero ───────────────────────────────────────────────── */
+.hero{padding-block:var(--s10) var(--s8);border-top:none}
+.hero-grid{display:grid;gap:var(--s5);max-width:52rem}
+.hero h1{font-size:clamp(2.1rem,6.2vw,4rem);font-weight:800;letter-spacing:-.035em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-lede{font-size:clamp(1.0625rem,1.7vw,1.25rem);color:var(--text-muted);max-width:40rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s2)}
+
+.strip{margin-top:var(--s8);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  display:grid;grid-template-columns:repeat(4,1fr)}
+.strip div{padding:var(--s4) var(--s4) var(--s4) 0;border-right:1px solid var(--rule)}
+.strip div:last-child{border-right:none}
+.strip dt{font-family:var(--f-mono);font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-subtle);margin-bottom:.3rem}
+.strip dd{margin:0;font-size:.9375rem;font-weight:600;line-height:1.35}
+.strip a{color:var(--accent);text-decoration:none}
+.strip a:hover{text-decoration:underline}
+
+/* ── Projetos ───────────────────────────────────────────── */
+.ledger{background-image:repeating-linear-gradient(to right,var(--ledger) 0 1px,transparent 1px 88px)}
+.case{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--surface);overflow:hidden}
+.case-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s3);padding:var(--s5);border-bottom:1px solid var(--border)}
+.case-top h3{font-size:1.75rem;font-weight:700}
+.case-top p{color:var(--text-muted);font-size:.9375rem}
+.tag{font-family:var(--f-mono);font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);
+  background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-sm);padding:.25rem .5rem;white-space:nowrap}
+.case-body{display:grid;grid-template-columns:repeat(3,1fr)}
+.case-body > div{padding:var(--s5);border-right:1px solid var(--border)}
+.case-body > div:last-child{border-right:none}
+.case-body h4{margin:0 0 .5rem;font-family:var(--f-mono);font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-subtle);font-weight:500}
+.case-body p{font-size:.9375rem;color:var(--text-muted)}
+.case-body .now{color:var(--text)}
+.case-foot{padding:var(--s4) var(--s5);border-top:1px solid var(--border);background:var(--surface-2);
+  font-family:var(--f-mono);font-size:.6875rem;letter-spacing:.06em;color:var(--text-muted)}
+
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4);margin-top:var(--s5)}
+.proj{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--surface);
+  padding:var(--s5);display:flex;flex-direction:column;gap:var(--s3);transition:border-color .16s}
+.proj:hover{border-color:var(--border-strong)}
+.proj h3{font-size:1.1875rem;font-weight:700}
+.proj .before{font-size:.8125rem;color:var(--text-subtle);border-left:2px solid var(--border-strong);padding-left:.65rem}
+.proj .before b{display:block;font-family:var(--f-mono);font-size:.5625rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;margin-bottom:.15rem}
+.proj p.desc{font-size:.9375rem;color:var(--text-muted)}
+.proj .more{margin-top:auto;padding-top:var(--s2);font-size:.875rem;font-weight:600;color:var(--accent);text-decoration:none}
+.proj .more:hover{text-decoration:underline}
+
+/* ── Depoimentos ────────────────────────────────────────── */
+.quotes{columns:2;column-gap:var(--s4)}
+.quote{break-inside:avoid;border:1px solid var(--border);border-radius:var(--r-lg);background:var(--surface);
+  padding:var(--s5);margin-bottom:var(--s4)}
+.stars{color:var(--accent);font-size:.8125rem;letter-spacing:.14em;margin-bottom:var(--s3)}
+.quote p{font-size:1rem;line-height:1.6}
+.quote footer{margin-top:var(--s4);padding-top:var(--s3);border-top:1px solid var(--border);
+  font-family:var(--f-mono);font-size:.625rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-subtle);line-height:1.6}
+.verify{display:inline-flex;align-items:center;gap:.4rem;margin-top:var(--s4);color:var(--accent);
+  font-weight:600;font-size:.9375rem;text-decoration:none}
+.verify:hover{text-decoration:underline}
+
+/* ── Serviços ───────────────────────────────────────────── */
+.svc{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s4)}
+.svc article{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--surface);padding:var(--s5);display:grid;gap:var(--s2)}
+.svc h3{font-size:1.1875rem;font-weight:700}
+.svc p{color:var(--text-muted);font-size:.9375rem}
+.stack{margin-top:var(--s5);border-top:1px solid var(--rule);padding-top:var(--s4);
+  display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+.stack span{font-family:var(--f-mono);font-size:.6875rem;letter-spacing:.06em;color:var(--text-muted);
+  border:1px solid var(--border);border-radius:var(--r-sm);padding:.3rem .55rem}
+.stack b{font-family:var(--f-mono);font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-subtle);font-weight:500;margin-right:.4rem}
+
+/* ── Processo ───────────────────────────────────────────── */
+.steps{display:grid;gap:0;border-top:1px solid var(--border)}
+.step{display:grid;grid-template-columns:3.5rem 1fr 13rem;gap:var(--s5);align-items:start;
+  padding-block:var(--s5);border-bottom:1px solid var(--border)}
+.step .num{font-family:var(--f-mono);font-size:.8125rem;color:var(--accent);padding-top:.2rem}
+.step h3{font-size:1.1875rem;font-weight:700;margin-bottom:.35rem}
+.step p{color:var(--text-muted);font-size:.9375rem}
+.step .meta{display:grid;gap:.35rem}
+.step .meta b{font-family:var(--f-mono);font-size:.5625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-subtle);font-weight:500}
+.step .meta span{font-size:.875rem;color:var(--text)}
+
+/* ── Incluso ────────────────────────────────────────────── */
+.incl{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4)}
+.incl article{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--surface);padding:var(--s5);display:grid;gap:var(--s2);align-content:start}
+.incl h3{font-size:1.0625rem;font-weight:700}
+.incl p{font-size:.875rem;color:var(--text-muted)}
+.incl .k{font-family:var(--f-mono);font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+
+/* ── Time ───────────────────────────────────────────────── */
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4)}
+.person{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--surface);overflow:hidden}
+.person img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center 22%;filter:grayscale(1) contrast(1.02)}
+.person .info{padding:var(--s4);display:grid;gap:.2rem}
+.person h3{font-size:1rem;font-weight:700;line-height:1.25}
+.person p{font-size:.8125rem;color:var(--text-muted)}
+.person .links{display:flex;gap:var(--s3);margin-top:var(--s2);font-family:var(--f-mono);font-size:.625rem;letter-spacing:.08em;text-transform:uppercase}
+.person .links a{color:var(--text-subtle);text-decoration:none}
+.person .links a:hover{color:var(--accent)}
+
+/* ── FAQ ────────────────────────────────────────────────── */
+.faq{border-top:1px solid var(--border);max-width:52rem}
+.faq details{border-bottom:1px solid var(--border)}
+.faq summary{list-style:none;cursor:pointer;padding-block:var(--s4);font-weight:600;font-size:1.0625rem;
+  display:flex;gap:var(--s4);align-items:baseline;justify-content:space-between}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--f-mono);color:var(--accent);font-size:1.1rem;flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq .a{padding-bottom:var(--s5);color:var(--text-muted);font-size:.9375rem;max-width:44rem}
+
+/* ── Contato ────────────────────────────────────────────── */
+.contact{display:grid;grid-template-columns:.85fr 1.15fr;gap:var(--s6);align-items:start}
+.contact-aside{display:grid;gap:var(--s4);border:1px solid var(--border);border-radius:var(--r-lg);background:var(--surface);padding:var(--s5)}
+.contact-aside dl{display:grid;gap:var(--s4);margin:0}
+.contact-aside dt{font-family:var(--f-mono);font-size:.5625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-subtle);margin-bottom:.15rem}
+.contact-aside dd{margin:0;font-size:.9375rem;font-weight:500}
+form{display:grid;gap:var(--s4)}
+.field{display:grid;gap:.4rem}
+.field label{font-family:var(--f-mono);font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)}
+.field input,.field textarea{font-family:var(--f-sans);font-size:1rem;color:var(--text);background:var(--surface-2);
+  border:1px solid var(--border);border-radius:var(--r-sm);padding:.7rem .85rem;min-height:44px;width:100%}
+.field textarea{resize:vertical;min-height:7rem}
+.field input:focus,.field textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.note{font-size:.8125rem;color:var(--text-subtle)}
+
+/* ── Rodapé ─────────────────────────────────────────────── */
+footer{border-top:1px solid var(--rule);padding-block:var(--s8) var(--s6)}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:var(--s6)}
+.foot h4{font-family:var(--f-mono);font-size:.5625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-subtle);font-weight:500;margin:0 0 var(--s3)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+.foot a{text-decoration:none;color:var(--text-muted);font-size:.9375rem}
+.foot a:hover{color:var(--accent)}
+.foot p{font-size:.9375rem;color:var(--text-muted)}
+.foot-end{margin-top:var(--s8);padding-top:var(--s4);border-top:1px solid var(--rule);
+  display:flex;flex-wrap:wrap;gap:var(--s4);justify-content:space-between;
+  font-family:var(--f-mono);font-size:.625rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-subtle)}
+
+/* ============================================================
+   07 · RESPONSIVO
+   ============================================================ */
+@media (max-width:1000px){
+  .case-body{grid-template-columns:1fr}
+  .case-body > div{border-right:none;border-bottom:1px solid var(--border)}
+  .case-body > div:last-child{border-bottom:none}
+  .proj-grid{grid-template-columns:repeat(2,1fr)}
+  .incl{grid-template-columns:repeat(2,1fr)}
+  .team{grid-template-columns:repeat(2,1fr)}
+  .contact{grid-template-columns:1fr}
+  .step{grid-template-columns:2.5rem 1fr;gap:var(--s4)}
+  .step .meta{grid-column:2;padding-top:var(--s3);border-top:1px dashed var(--border)}
+}
+@media (max-width:860px){
+  .nav-links,.nav-cta{display:none}
+  .burger{display:inline-flex}
+  .strip{grid-template-columns:repeat(2,1fr)}
+  .strip div{border-bottom:1px solid var(--rule);padding-right:var(--s4)}
+  .strip div:nth-child(2n){border-right:none}
+  .strip div:nth-child(n+3){border-bottom:none}
+  .quotes{columns:1}
+}
+@media (max-width:620px){
+  .sec{padding-block:var(--s10)}
+  .proj-grid,.incl,.team,.svc{grid-template-columns:1fr}
+  .hero-actions .btn{width:100%}
+  .foot{grid-template-columns:1fr}
+  .strip{grid-template-columns:1fr}
+  .strip div{border-right:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="proto">
+  Protótipo · 14 set 2026 · itens marcados <b>A DEFINIR</b> dependem das 11 pendências do <b>doc 05</b>
+</div>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<nav class="nav" aria-label="Principal">
+  <div class="wrap nav-row">
+    <a class="brand" href="#top"><i>404</i>DEVS</a>
+    <ul class="nav-links">
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#processo">Processo</a></li>
+      <li><a href="#time">Time</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn btn-primary nav-cta" href="https://wa.me/5517996142053" target="_blank" rel="noreferrer">Falar no WhatsApp</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="panel">Menu</button>
+  </div>
+  <div class="wrap panel" id="panel">
+    <ul>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#processo">Processo</a></li>
+      <li><a href="#time">Time</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn btn-primary" href="https://wa.me/5517996142053" target="_blank" rel="noreferrer">Falar no WhatsApp</a>
+  </div>
+</nav>
+
+<!-- ══════════ 1 · HERO ══════════ -->
+<section class="hero sec" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <p class="eyebrow">Desenvolvimento sob medida</p>
+      <h1>Tiramos a sua operação da <em>planilha</em> e do <em>caderno</em>.</h1>
+      <p class="hero-lede">
+        Somos quatro desenvolvedores. Construímos sistemas de gestão, sites e
+        aplicativos para empresas que precisam organizar o que hoje está no papel,
+        no WhatsApp e no Excel.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://wa.me/5517996142053" target="_blank" rel="noreferrer">Falar no WhatsApp</a>
+        <a class="btn btn-ghost" href="#projetos">Ver projetos entregues</a>
+      </div>
+    </div>
+
+    <dl class="strip">
+      <div><dt>Formalização</dt><dd>CNPJ ativo, com nota fiscal</dd></div>
+      <div><dt>Equipe</dt><dd>4 desenvolvedores</dd></div>
+      <div><dt>Entregas</dt><dd>6 sistemas em 2026</dd></div>
+      <div><dt>Verificação</dt><dd><a href="https://www.99freelas.com.br/user/404Devs.Ofc" target="_blank" rel="noreferrer">Perfil no 99Freelas ↗</a></dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ══════════ 2 · PROJETOS ══════════ -->
+<section class="sec ledger" id="projetos">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">O que já entregamos</p>
+      <h2>Sistemas rodando, em oito setores diferentes.</h2>
+      <p>De granja a hotel, de barbearia a fábrica. Cada projeto começou com alguém
+         controlando a operação no papel.</p>
+    </div>
+
+    <article class="case">
+      <div class="case-top">
+        <h3>GranjaTech</h3>
+        <p>Gestão e monitoramento para granja</p>
+        <span class="tag" style="margin-left:auto">Avicultura</span>
+      </div>
+      <div class="case-body">
+        <div>
+          <h4>Antes</h4>
+          <p>Controle de lote, insumo e produção em caderno e planilha, sem leitura
+             de sensor em tempo real.</p>
+        </div>
+        <div>
+          <h4>O que construímos</h4>
+          <p class="now">Plataforma de automação com controle de produção, monitoramento
+             de sensores em tempo real e gestão de lotes e insumos.</p>
+        </div>
+        <div>
+          <h4>Resultado</h4>
+          <p><span class="todo">A definir</span><br>
+             Pendência 1 do doc 05: precisamos de um número real — lotes controlados,
+             horas economizadas, perda evitada.</p>
+        </div>
+      </div>
+      <p class="case-foot">C# (.NET Core) · React · PostgreSQL · Docker · Azure CI/CD</p>
+    </article>
+
+    <div class="proj-grid">
+      <article class="proj">
+        <span class="tag" style="justify-self:start">Barbearia</span>
+        <h3>BarberFlow</h3>
+        <p class="before"><b>Antes</b>Agenda de papel e horário marcado por WhatsApp</p>
+        <p class="desc">Gestão completa e agendamento online, sem conflito de horário.</p>
+        <a class="more" href="https://www.appbarberflow.com.br/" target="_blank" rel="noreferrer">Ver o sistema ↗</a>
+      </article>
+
+      <article class="proj">
+        <span class="tag" style="justify-self:start">Nutrição animal</span>
+        <h3>AgroNutri</h3>
+        <p class="before"><b>Antes</b>Planilha para calcular ração, refeita a cada lote</p>
+        <p class="desc">Cálculo preciso de ração e formulação de dieta, para reduzir
+           custo e cuidar da saúde do rebanho.</p>
+      </article>
+
+      <article class="proj">
+        <span class="tag" style="justify-self:start">Hotelaria</span>
+        <h3>HotelOS</h3>
+        <p class="before"><b>Antes</b>Caderno de reservas e faturamento à parte</p>
+        <p class="desc">PMS completo: reservas, faturamento e gestão operacional
+           no mesmo lugar.</p>
+      </article>
+
+      <article class="proj">
+        <span class="tag" style="justify-self:start">Imobiliário</span>
+        <h3>Controle-Imóveis</h3>
+        <p class="before"><b>Antes</b>Planilha de cobrança e imposto por imóvel</p>
+        <p class="desc">Sistema web para controle de cobrança e valores de imposto.</p>
+      </article>
+
+      <article class="proj">
+        <span class="tag" style="justify-self:start">Indústria de alimentos</span>
+        <h3>Vendas e estoque</h3>
+        <p class="before"><b>Antes</b>Estoque e pedidos anotados em planilha</p>
+        <p class="desc">Sistema de vendas e controle de estoque para fábrica de polpas.</p>
+      </article>
+
+      <article class="proj">
+        <span class="tag" style="justify-self:start">Dados · B2B</span>
+        <h3>Scraping de CNPJ</h3>
+        <p class="before"><b>Antes</b>Consulta manual, empresa por empresa</p>
+        <p class="desc">Coleta via API com registro em banco e exportação em Excel,
+           JSON e CSV.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 3 · DEPOIMENTOS ══════════ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">O que os clientes dizem</p>
+      <h2>Avaliações reais, publicadas no nosso perfil.</h2>
+      <p>Todas verificáveis no 99Freelas. Não editamos nenhuma palavra.</p>
+    </div>
+
+    <div class="quotes">
+      <blockquote class="quote">
+        <div class="stars" aria-label="5 de 5">★★★★★</div>
+        <p>“Pessoal da 404Devs, parabéns pelo sistema! Ficou perfeito. O ponto alto
+        para mim foi ter tido essa visão de bastidores durante as etapas; isso faz
+        toda a diferença para quem está do lado do cliente. Acompanhar a construção
+        de perto me deu total confiança no que estava sendo entregue. Obrigado pela
+        parceria e pelo trabalho nota 10!”</p>
+        <footer>Dashboard de planejamento de estudos e metas · mar 2026</footer>
+      </blockquote>
+
+      <blockquote class="quote">
+        <div class="stars" aria-label="5 de 5">★★★★★</div>
+        <p>“Fiquei muito satisfeito com a landing page produzida. O visual é limpo e
+        as informações estão bem organizadas, o que ajuda muito na hora de convencer
+        meus clientes a fecharem negócios. O site abre rápido no celular e no
+        computador, o que era uma prioridade para mim. Um investimento que valeu
+        muito a pena! Parabéns a toda equipe do 404Devs.”</p>
+        <footer>Landing page profissional para pequenos negócios · mar 2026</footer>
+      </blockquote>
+
+      <blockquote class="quote">
+        <div class="stars" aria-label="5 de 5">★★★★★</div>
+        <p>“Equipe extremamente atenciosa, responsável e dedicada. Cumprem
+        rigorosamente os prazos e mantêm um fluxo de trabalho excelente, enviando
+        amostras constantes do projeto.”</p>
+        <footer>Sistema de vendas e estoque para fábrica de polpas · mar 2026</footer>
+      </blockquote>
+
+      <blockquote class="quote">
+        <div class="stars" aria-label="5 de 5">★★★★★</div>
+        <p>“O trabalho foi bem feito, profissionais com experiência.”</p>
+        <footer>Adequação de projeto de web scraping para Jucesp · mar 2026</footer>
+      </blockquote>
+
+      <blockquote class="quote">
+        <div class="stars" aria-label="5 de 5">★★★★★</div>
+        <p>“O trabalho foi realizado com boa qualidade, recomendo!”</p>
+        <footer>Scraping de empresas na Jucesp a partir de lista de CNPJs · mar 2026</footer>
+      </blockquote>
+    </div>
+
+    <a class="verify" href="https://www.99freelas.com.br/user/404Devs.Ofc" target="_blank" rel="noreferrer">
+      Ver todas as avaliações no 99Freelas ↗
+    </a>
+  </div>
+</section>
+
+<!-- ══════════ 4 · SERVIÇOS ══════════ -->
+<section class="sec" id="servicos">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Serviços</p>
+      <h2>O que a gente resolve.</h2>
+    </div>
+
+    <div class="svc">
+      <article>
+        <h3>Sistema de gestão sob medida</h3>
+        <p>Para quem controla a operação em planilha, caderno ou WhatsApp e já passou
+           do ponto. Agenda, estoque, clientes, faturamento e relatório no mesmo lugar.</p>
+      </article>
+      <article>
+        <h3>Site e landing page que vende</h3>
+        <p>Página rápida, clara e feita para o cliente fechar negócio — não para
+           ganhar prêmio de design.</p>
+      </article>
+      <article>
+        <h3>Integração e automação</h3>
+        <p>Conectar sistemas que não conversam e automatizar o trabalho manual que
+           hoje alguém faz repetidamente na mão.</p>
+      </article>
+      <article>
+        <h3>Manutenção e evolução</h3>
+        <p>Suporte contínuo depois da entrega, com quem construiu o sistema — não
+           com um atendente que nunca viu o seu código.</p>
+      </article>
+    </div>
+
+    <div class="stack">
+      <b>Trabalhamos com</b>
+      <span>C# / .NET</span><span>Node.js</span><span>TypeScript</span><span>React</span>
+      <span>React Native</span><span>PostgreSQL</span><span>MySQL</span><span>MongoDB</span>
+      <span>Supabase</span><span>Docker</span><span>Azure</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 5 · PROCESSO ══════════ -->
+<section class="sec" id="processo">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Como trabalhamos</p>
+      <h2>Você acompanha a construção do começo ao fim.</h2>
+      <p>“O ponto alto para mim foi ter tido essa visão de bastidores durante as
+         etapas.” — cliente, março de 2026</p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <span class="num">01</span>
+        <div>
+          <h3>Levantamento e alinhamento</h3>
+          <p>Mapeamos objetivos, regras de negócio e expectativas para definir o
+             escopo com comunicação direta.</p>
+        </div>
+        <div class="meta">
+          <div><b>Você recebe</b><span>Documento de escopo com funcionalidades, prazo e valor fechado</span></div>
+          <div><b>Prazo</b><span class="todo">A definir</span></div>
+        </div>
+      </article>
+
+      <article class="step">
+        <span class="num">02</span>
+        <div>
+          <h3>Arquitetura e desenvolvimento</h3>
+          <p>Construímos front-end, back-end e banco com a stack adequada ao projeto,
+             priorizando desempenho e manutenção.</p>
+        </div>
+        <div class="meta">
+          <div><b>Você recebe</b><span>Amostras do projeto em andamento, para acompanhar de perto</span></div>
+          <div><b>Prazo</b><span class="todo">A definir</span></div>
+        </div>
+      </article>
+
+      <article class="step">
+        <span class="num">03</span>
+        <div>
+          <h3>Validação e publicação</h3>
+          <p>Testamos os fluxos críticos, ajustamos consultas e publicamos com
+             estabilidade e segurança.</p>
+        </div>
+        <div class="meta">
+          <div><b>Você recebe</b><span>Sistema no ar e treinamento de uso para a sua equipe</span></div>
+          <div><b>Prazo</b><span class="todo">A definir</span></div>
+        </div>
+      </article>
+
+      <article class="step">
+        <span class="num">04</span>
+        <div>
+          <h3>Acompanhamento e suporte</h3>
+          <p>Seguimos com suporte técnico, melhorias evolutivas e monitoramento para
+             manter o sistema eficiente no dia a dia.</p>
+        </div>
+        <div class="meta">
+          <div><b>Você recebe</b><span>Canal direto para correção e evolução</span></div>
+          <div><b>Prazo</b><span>Contínuo</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 6 · O QUE ESTÁ INCLUSO ══════════ -->
+<section class="sec ledger">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">O que está incluso</p>
+      <h2>Tudo por escrito, antes de começar.</h2>
+      <p>Você sabe exatamente o que vai receber, quando, por quanto — e o que acontece
+         se algo der errado depois.</p>
+    </div>
+
+    <div class="incl">
+      <article>
+        <span class="k">Contrato</span>
+        <h3>Escopo e prazo por escrito</h3>
+        <p>Funcionalidades, prazo de entrega e valor definidos em contrato antes da
+           primeira linha de código.</p>
+      </article>
+      <article>
+        <span class="k">Nota fiscal</span>
+        <h3>CNPJ ativo</h3>
+        <p>Emitimos nota fiscal em todo projeto. Sua empresa lança a despesa
+           normalmente na contabilidade.</p>
+      </article>
+      <article>
+        <span class="k">Garantia</span>
+        <h3>Correção sem custo</h3>
+        <p>Defeito encontrado depois da entrega é corrigido sem cobrança por
+           <span class="todo">A definir</span> dias.</p>
+      </article>
+      <article>
+        <span class="k">Treinamento</span>
+        <h3>Sua equipe sabe usar</h3>
+        <p>Ensinamos quem vai operar o sistema no dia a dia. Entrega não é só
+           colocar no ar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 7 · TIME ══════════ -->
+<section class="sec" id="time">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Quem faz</p>
+      <h2>Quatro pessoas, com nome e sobrenome.</h2>
+      <p>Você fala direto com quem escreve o código. Sem intermediário, sem gerente
+         de conta repassando recado.</p>
+    </div>
+
+    <div class="team">
+      <article class="person">
+        <img src="../assets/img/team/samuel.webp" alt="Samuel Henrique" width="400" height="400" loading="lazy">
+        <div class="info">
+          <h3>Samuel Henrique</h3>
+          <p>Front-end e interfaces</p>
+          <div class="links">
+            <a href="https://www.linkedin.com/in/samuel-henrique-92b1a3278" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://github.com/samuel05015" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="person">
+        <img src="../assets/img/team/guilherme.webp" alt="Guilherme Henrique de Oliveira" width="400" height="400" loading="lazy">
+        <div class="info">
+          <h3>Guilherme H. de Oliveira</h3>
+          <p>Full stack e QA</p>
+          <div class="links">
+            <a href="https://linkedin.com/in/guilherme--henrique" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://github.com/GuilhermeOliveira0" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="person">
+        <img src="../assets/img/team/adryan.webp" alt="Adryan Francisco" width="400" height="400" loading="lazy">
+        <div class="info">
+          <h3>Adryan Francisco</h3>
+          <p>Back-end e arquitetura</p>
+          <div class="links">
+            <a href="https://www.linkedin.com/in/adryan-francisco" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://github.com/Adryan-Francisco" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="person">
+        <img src="../assets/img/team/wendell.webp" alt="Wendell Nascimento" width="400" height="400" loading="lazy">
+        <div class="info">
+          <h3>Wendell Nascimento</h3>
+          <p>Back-end e cibersegurança</p>
+          <div class="links">
+            <a href="https://www.linkedin.com/in/wendell-nascimento-0923a8244" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://github.com/wendzera" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 8 · FAQ ══════════ -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Perguntas frequentes</p>
+      <h2>O que todo mundo pergunta antes de fechar.</h2>
+    </div>
+
+    <div class="faq">
+      <details open>
+        <summary>Quanto custa um projeto?</summary>
+        <div class="a">
+          <span class="todo">A definir · pendência 5</span><br><br>
+          Recomendação do doc 03: declarar faixa por categoria — “landing page a partir
+          de R$ X”, “sistema de gestão a partir de R$ Y”. Filtra quem não tem orçamento
+          antes de gastar uma call.
+        </div>
+      </details>
+      <details>
+        <summary>Quanto tempo leva?</summary>
+        <div class="a"><span class="todo">A definir · pendência 7</span> — prazo típico por tipo de projeto.</div>
+      </details>
+      <details>
+        <summary>Vocês emitem nota fiscal?</summary>
+        <div class="a">Sim. Temos CNPJ ativo e emitimos nota fiscal em todo projeto.</div>
+      </details>
+      <details>
+        <summary>Trabalham com contrato?</summary>
+        <div class="a">Sim. Escopo, prazo e valor ficam definidos por escrito antes do
+          início do desenvolvimento.</div>
+      </details>
+      <details>
+        <summary>E depois da entrega? Tem suporte?</summary>
+        <div class="a">Sim. Correção de defeito sem custo por <span class="todo">A definir</span> dias,
+          e suporte contínuo para melhorias evolutivas. <span class="todo">Pendência 6</span></div>
+      </details>
+      <details>
+        <summary>Atendem fora da região?</summary>
+        <div class="a">Sim. Atendemos remoto para todo o Brasil. Os projetos do nosso
+          portfólio foram entregues assim.</div>
+      </details>
+      <details>
+        <summary>De quem fica o código do sistema?</summary>
+        <div class="a"><span class="todo">A definir</span> — vale responder com clareza.
+          É a pergunta que todo cliente pensa e quase ninguém faz em voz alta.</div>
+      </details>
+      <details>
+        <summary>Como funciona o pagamento?</summary>
+        <div class="a"><span class="todo">A definir · pendência 8</span> — entrada, parcelas e marcos de entrega.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 9 · CONTATO ══════════ -->
+<section class="sec" id="contato">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Contato</p>
+      <h2>Vamos conversar sobre o seu projeto.</h2>
+      <p>Primeira conversa é gratuita e sem compromisso. Respondemos em até 24 horas úteis.</p>
+    </div>
+
+    <div class="contact">
+      <div class="contact-aside">
+        <a class="btn btn-primary" href="https://wa.me/5517996142053" target="_blank" rel="noreferrer">Falar no WhatsApp</a>
+        <dl>
+          <div><dt>E-mail</dt><dd>404devsoficial@gmail.com</dd></div>
+          <div><dt>Atendimento</dt><dd>Seg a sex, 9h às 18h</dd></div>
+          <div><dt>Onde atendemos</dt><dd>Remoto, todo o Brasil</dd></div>
+        </dl>
+      </div>
+
+      <form id="contato-form" novalidate>
+        <div class="field">
+          <label for="f-nome">Nome</label>
+          <input id="f-nome" name="nome" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-contato">E-mail ou WhatsApp</label>
+          <input id="f-contato" name="contato" type="text" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="f-segmento">Qual o seu segmento?</label>
+          <input id="f-segmento" name="segmento" type="text" placeholder="Barbearia, clínica, granja, hotel...">
+        </div>
+        <div class="field">
+          <label for="f-msg">O que você precisa resolver?</label>
+          <textarea id="f-msg" name="mensagem" placeholder="Hoje eu controlo isso numa planilha e..."></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Enviar mensagem</button>
+        <p class="note" id="form-note">Protótipo — no site real este formulário envia por
+          função serverless na Vercel (doc 06), não por abertura do Gmail.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RODAPÉ ══════════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top" style="margin-bottom:var(--s3)"><i>404</i>DEVS</a>
+        <p>Sistemas de gestão, sites e aplicativos sob medida para pequenas e médias empresas.</p>
+        <p style="margin-top:var(--s3)">CNPJ <span class="todo">A definir</span></p>
+      </div>
+      <div>
+        <h4>Páginas</h4>
+        <ul>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#processo">Processo</a></li>
+          <li><a href="#time">Time</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Onde nos encontrar</h4>
+        <ul>
+          <li><a href="https://www.99freelas.com.br/user/404Devs.Ofc" target="_blank" rel="noreferrer">99Freelas ↗</a></li>
+          <li><a href="https://www.instagram.com/404devs.ofc/" target="_blank" rel="noreferrer">Instagram ↗</a></li>
+          <li><a href="https://www.tiktok.com/@404devs.ofc" target="_blank" rel="noreferrer">TikTok ↗</a></li>
+          <li><a href="https://wa.me/5517996142053" target="_blank" rel="noreferrer">WhatsApp ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-end">
+      <span>© 2026 404Devs</span>
+      <span>Seg a sex, 9h às 18h · Atendimento remoto, todo o Brasil</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  /* menu mobile */
+  var burger = document.getElementById('burger');
+  var panel  = document.getElementById('panel');
+
+  function setOpen(open) {
+    panel.dataset.open = open ? 'true' : 'false';
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  burger.addEventListener('click', function () {
+    setOpen(burger.getAttribute('aria-expanded') !== 'true');
+  });
+
+  panel.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') setOpen(false);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      burger.focus();
+    }
+  });
+
+  /* formulário — protótipo: não envia */
+  var form = document.getElementById('contato-form');
+  var note = document.getElementById('form-note');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var nome = document.getElementById('f-nome');
+    var ctt  = document.getElementById('f-contato');
+
+    if (!nome.value.trim()) { note.textContent = 'Informe o seu nome para continuar.'; nome.focus(); return; }
+    if (!ctt.value.trim())  { note.textContent = 'Informe um e-mail ou WhatsApp para retorno.'; ctt.focus(); return; }
+
+    note.textContent = 'Validação OK. Neste protótipo o envio está desligado — no site real vai para a função serverless (doc 06).';
+  });
+})();
+</script>

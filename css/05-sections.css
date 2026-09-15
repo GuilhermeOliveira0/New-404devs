@@ -1,0 +1,531 @@
+/* ============================================================================
+   05 · SECTIONS
+   Composição específica de cada seção. Pode depender de 01 a 04.
+
+   Hierarquia de superfície (design.md D7): borda, fundo e elevação são gastos
+   por papel, não aplicados a tudo. Case em destaque, projetos, depoimentos e
+   time recebem superfície; serviços, processo e condições comerciais são
+   separados por régua, sem fundo. Uma grade uniforme de cards achata a
+   hierarquia.
+   ============================================================================ */
+
+/* ── Primeira dobra ────────────────────────────────────────────────────── */
+
+.hero {
+  padding-block: var(--space-10) var(--space-8);
+}
+
+.hero__copy {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 52rem;
+}
+
+.hero__lede {
+  max-width: 40rem;
+  color: var(--text-secondary);
+  font-size: var(--size-lede);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* Momento assinatura: o traço que risca as palavras. Anima apenas transform.
+   Estado de repouso = traço completo, para que a página sem script continue
+   legível e coerente. Ver design.md D6. */
+.strike {
+  position: relative;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.strike::after {
+  content: "";
+  position: absolute;
+  left: -0.03em;
+  right: -0.03em;
+  top: 0.56em;
+  height: 0.075em;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  transform-origin: left center;
+}
+
+/* ── Faixa de credibilidade ────────────────────────────────────────────── */
+
+.credbar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: var(--space-8);
+  border-block: 1px solid var(--rule);
+}
+
+.credbar > div {
+  padding: var(--space-4) var(--space-4) var(--space-4) 0;
+  border-right: 1px solid var(--rule);
+}
+
+.credbar > div:last-child {
+  border-right: 0;
+}
+
+.credbar dt {
+  margin-bottom: var(--space-1);
+  font-family: var(--font-label);
+  font-size: var(--size-label-sm);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.credbar dd {
+  margin: 0;
+  font-size: var(--size-small);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+}
+
+/* ── Case em destaque ──────────────────────────────────────────────────── */
+
+.case__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.case__head h3 {
+  font-size: var(--size-heading);
+}
+
+.case__head p {
+  color: var(--text-secondary);
+  font-size: var(--size-small);
+}
+
+.case__head .tag {
+  margin-left: auto;
+}
+
+.case__body {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.case__body > div {
+  padding: var(--space-5);
+  border-right: 1px solid var(--border-subtle);
+}
+
+.case__body > div:last-child {
+  border-right: 0;
+}
+
+.case__body h4 {
+  margin-bottom: var(--space-2);
+  font-family: var(--font-label);
+  font-size: var(--size-label-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.case__body p {
+  color: var(--text-secondary);
+  font-size: var(--size-small);
+}
+
+.case__body .is-outcome {
+  color: var(--text-primary);
+}
+
+.case__stack {
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--border-subtle);
+  background: var(--surface-sunken);
+  font-family: var(--font-label);
+  font-size: var(--size-label);
+  color: var(--text-secondary);
+}
+
+/* ── Projetos ──────────────────────────────────────────────────────────── */
+
+.projects {
+  margin-top: var(--space-5);
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+}
+
+.project h3 {
+  font-size: var(--size-subhead);
+}
+
+.project__tag {
+  align-self: start;
+}
+
+/* A linha "antes": informação real sobre cada cliente, não ornamento. */
+.project__before {
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--border-strong);
+  color: var(--text-tertiary);
+  font-size: var(--size-small);
+}
+
+.project__before b {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-family: var(--font-label);
+  font-size: var(--size-label-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.project__desc {
+  color: var(--text-secondary);
+  font-size: var(--size-small);
+}
+
+.project__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--measure-tap);
+  margin-top: auto;
+  font-size: var(--size-small);
+}
+
+/* ── Depoimentos ───────────────────────────────────────────────────────── */
+
+.quotes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.quotes > .surface {
+  padding: var(--space-5);
+}
+
+.quotes > .is-featured {
+  grid-column: 1 / -1;
+}
+
+.quotes__verify {
+  margin-top: var(--space-5);
+  color: var(--text-tertiary);
+  font-family: var(--font-label);
+  font-size: var(--size-label);
+}
+
+/* ── Serviços — separados por régua, sem superfície ────────────────────── */
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6) var(--space-8);
+}
+
+.services > article {
+  display: grid;
+  gap: var(--space-2);
+  align-content: start;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.services p {
+  color: var(--text-secondary);
+  font-size: var(--size-small);
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-8);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--rule);
+}
+
+/* ── Processo — linhas separadas por régua ─────────────────────────────── */
+
+.steps {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: var(--space-8) 1fr 16rem;
+  gap: var(--space-5);
+  align-items: start;
+  padding-block: var(--space-5);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.step__num {
+  padding-top: var(--space-1);
+  font-family: var(--font-label);
+  font-size: var(--size-small);
+  color: var(--accent);
+}
+
+.step h3 {
+  margin-bottom: var(--space-1);
+  font-size: var(--size-subhead);
+}
+
+.step p {
+  color: var(--text-secondary);
+  font-size: var(--size-small);
+}
+
+.step__meta {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.step__meta b {
+  display: block;
+  font-family: var(--font-label);
+  font-size: var(--size-label-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.step__meta span {
+  font-size: var(--size-small);
+}
+
+/* ── Condições comerciais ──────────────────────────────────────────────── */
+
+.included {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.included > article {
+  display: grid;
+  gap: var(--space-2);
+  align-content: start;
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--accent-hairline);
+}
+
+.included h3 {
+  font-size: var(--size-body);
+}
+
+.included p {
+  color: var(--text-secondary);
+  font-size: var(--size-small);
+}
+
+/* ── Time ──────────────────────────────────────────────────────────────── */
+
+.team {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.person img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.03);
+  transition: filter var(--duration-micro) var(--ease-micro);
+}
+
+.person:hover img {
+  filter: grayscale(0) contrast(1);
+}
+
+.person__info {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-4);
+}
+
+.person h3 {
+  font-size: var(--size-body);
+  line-height: var(--leading-snug);
+}
+
+.person p {
+  color: var(--text-secondary);
+  font-size: var(--size-small);
+}
+
+.person__links {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
+}
+
+.person__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--measure-tap);
+  color: var(--text-tertiary);
+  font-family: var(--font-label);
+  font-size: var(--size-label-sm);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  transition: color var(--duration-micro) var(--ease-micro);
+}
+
+.person__links a:hover {
+  color: var(--accent);
+}
+
+/* ── Contato ───────────────────────────────────────────────────────────── */
+
+.contact {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.contact__aside {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-5);
+}
+
+.contact__aside dl {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.contact__aside dt {
+  margin-bottom: var(--space-1);
+  font-family: var(--font-label);
+  font-size: var(--size-label-sm);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.contact__aside dd {
+  margin: 0;
+  font-size: var(--size-small);
+  font-weight: var(--weight-medium);
+}
+
+.contact__form {
+  display: grid;
+  gap: var(--space-4);
+}
+
+/* ── Adaptação de largura ──────────────────────────────────────────────── */
+
+@media (max-width: 1000px) {
+  .case__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .case__body > div {
+    border-right: 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .case__body > div:last-child {
+    border-bottom: 0;
+  }
+
+  .included {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .team {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .step {
+    grid-template-columns: var(--space-6) 1fr;
+    gap: var(--space-4);
+  }
+
+  .step__meta {
+    grid-column: 2;
+    padding-top: var(--space-3);
+    border-top: 1px dashed var(--border-subtle);
+  }
+}
+
+@media (max-width: 900px) {
+  .credbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .credbar > div {
+    padding-right: var(--space-4);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .credbar > div:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .credbar > div:nth-child(n + 3) {
+    border-bottom: 0;
+  }
+
+  .quotes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .hero {
+    padding-block: var(--space-8) var(--space-6);
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+
+  .credbar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .credbar > div {
+    border-right: 0;
+  }
+
+  .credbar > div:nth-child(n + 3) {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .credbar > div:last-child {
+    border-bottom: 0;
+  }
+
+  .services,
+  .included,
+  .team {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

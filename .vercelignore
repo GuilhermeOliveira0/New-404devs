@@ -1,0 +1,8 @@
+# Documentacao interna e artefatos de planejamento nao vao para producao.
+# Com outputDirectory ".", tudo o que nao estiver aqui fica publicamente
+# acessivel — inclusive a auditoria interna e as notas de implementacao.
+docs/
+openspec/
+.claude/
+tools/
+*.md

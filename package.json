@@ -1,0 +1,14 @@
+{
+  "name": "404devs-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site institucional da 404Devs",
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build-css.mjs",
+    "dev": "npx --yes serve ."
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
