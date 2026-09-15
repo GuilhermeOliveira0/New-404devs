@@ -6,3 +6,5 @@ openspec/
 .claude/
 tools/
 *.md
+src/
+content/

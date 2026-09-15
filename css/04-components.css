@@ -9,20 +9,6 @@
    comportamento de foco (LSP).
    ============================================================================ */
 
-/* ── Rótulo (eyebrow, etiqueta, metadado) ──────────────────────────────── */
-
-.label {
-  font-family: var(--font-label);
-  font-size: var(--size-label);
-  font-weight: var(--weight-medium);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-}
-
-.label--accent   { color: var(--accent); }
-.label--muted    { color: var(--text-tertiary); }
-.label--sm       { font-size: var(--size-label-sm); }
-
 /* ── Botão ─────────────────────────────────────────────────────────────── */
 
 .btn {
@@ -43,16 +29,7 @@
   transition:
     background-color var(--duration-micro) var(--ease-micro),
     border-color var(--duration-micro) var(--ease-micro),
-    color var(--duration-micro) var(--ease-micro),
-    transform var(--duration-micro) var(--ease-micro);
-}
-
-.btn:hover {
-  transform: translateY(calc(var(--lift-micro) * -1));
-}
-
-.btn:active {
-  transform: none;
+    color var(--duration-micro) var(--ease-micro);
 }
 
 .btn--primary {
@@ -75,61 +52,6 @@
 
 .btn--block {
   width: 100%;
-}
-
-/* ── Link de texto ─────────────────────────────────────────────────────── */
-
-.link {
-  color: var(--accent);
-  font-weight: var(--weight-semibold);
-  transition: color var(--duration-micro) var(--ease-micro);
-}
-
-.link:hover {
-  color: var(--accent-hover);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
-
-/* ── Superfície ────────────────────────────────────────────────────────── */
-
-/* overflow + border-radius herdado: evita o artefato de entalhe transparente
-   no canto. Reaplicado de 29474a5 (ver notas-de-implementacao.md). */
-.surface {
-  overflow: hidden;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  background: var(--surface-raised);
-  transition: border-color var(--duration-micro) var(--ease-micro);
-}
-
-.surface > * {
-  border-radius: inherit;
-}
-
-.surface--interactive:hover {
-  border-color: var(--border-strong);
-}
-
-.surface--padded {
-  padding: var(--space-5);
-}
-
-/* ── Etiqueta de setor ─────────────────────────────────────────────────── */
-
-.tag {
-  display: inline-block;
-  padding: var(--space-1) var(--space-2);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  background: var(--surface-sunken);
-  color: var(--text-secondary);
-  font-family: var(--font-label);
-  font-size: var(--size-label-sm);
-  font-weight: var(--weight-medium);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  white-space: nowrap;
 }
 
 /* ── Marcação de pendência ─────────────────────────────────────────────── */
@@ -254,7 +176,7 @@
   font-size: var(--size-small);
 }
 
-/* ── Citação ───────────────────────────────────────────────────────────── */
+
 
 .quote__rating {
   margin-bottom: var(--space-3);

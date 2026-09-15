@@ -5,8 +5,10 @@
   "description": "Site institucional da 404Devs",
   "type": "module",
   "scripts": {
-    "build": "node tools/build-css.mjs",
-    "dev": "npx --yes serve ."
+    "build": "npm run build:css && npm run build:html",
+    "build:css": "node tools/build-css.mjs",
+    "build:html": "node tools/build-html.mjs",
+    "dev": "python -m http.server 4040 --bind 127.0.0.1"
   },
   "engines": {
     "node": ">=18"

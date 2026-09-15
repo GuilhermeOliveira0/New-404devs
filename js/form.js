@@ -27,6 +27,16 @@
     var submitLabel = submit ? submit.textContent.trim() : "";
     var sending = false;
 
+    // Mensagens vem do template (data-msg-*), no idioma da pagina.
+    var MSG = {
+      name: form.getAttribute("data-msg-name"),
+      contact: form.getAttribute("data-msg-contact"),
+      invalid: form.getAttribute("data-msg-invalid"),
+      sending: form.getAttribute("data-msg-sending"),
+      success: form.getAttribute("data-msg-success"),
+      failure: form.getAttribute("data-msg-failure")
+    };
+
     // Nomes literais em vez de concatenacao: uma busca por "notice--danger"
     // encontra este ponto de uso e o seletor nao vira orfao aparente.
     var TONE_CLASS = {
@@ -69,18 +79,18 @@
 
       var name = field("nome");
       if (!name.value.trim()) {
-        markInvalid(name, "Informe o seu nome para que a gente saiba com quem falar.");
+        markInvalid(name, MSG.name);
         return false;
       }
 
       var reach = field("contato");
       var reachValue = reach.value.trim();
       if (!reachValue) {
-        markInvalid(reach, "Informe um e-mail ou WhatsApp para podermos responder.");
+        markInvalid(reach, MSG.contact);
         return false;
       }
       if (!isReachable(reachValue)) {
-        markInvalid(reach, "Esse contato não parece válido. Use um e-mail ou um número com DDD.");
+        markInvalid(reach, MSG.invalid);
         return false;
       }
 
@@ -91,7 +101,7 @@
       sending = active;
       if (!submit) return;
       submit.disabled = active;
-      submit.textContent = active ? "Enviando..." : submitLabel;
+      submit.textContent = active ? MSG.sending : submitLabel;
     }
 
     form.addEventListener("submit", function (event) {
@@ -123,11 +133,11 @@
           if (!response.ok) throw new Error("resposta " + response.status);
           form.reset();
           clearInvalid();
-          say("Mensagem enviada. Respondemos em até 24 horas úteis.", "success");
+          say(MSG.success, "success");
         })
         .catch(function () {
           say(
-            "Não conseguimos enviar agora. Fale com a gente no WhatsApp: " + FALLBACK_URL,
+            MSG.failure + " " + FALLBACK_URL,
             "danger"
           );
         })

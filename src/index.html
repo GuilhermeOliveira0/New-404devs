@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="{{meta.lang}}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{head.title}}</title>
+    <meta name="description" content="{{head.description}}">
+    <link rel="canonical" href="{{meta.url}}">
+    {{meta.alternates}}
+    <meta name="theme-color" content="#0C0F16">
+
+    <!-- Identidade -->
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+    <!-- Compartilhamento -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="404Devs">
+    <meta property="og:locale" content="{{meta.ogLocale}}">
+    <meta property="og:url" content="{{meta.url}}">
+    <meta property="og:title" content="{{head.title}}">
+    <meta property="og:description" content="{{head.description}}">
+    <meta property="og:image" content="https://404devs.vercel.app/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{head.ogImageAlt}}">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Fontes auto-hospedadas; as duas usadas acima da dobra são pré-carregadas. -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="/assets/fonts/bricolage-grotesque-700.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="/assets/fonts/ibm-plex-sans-400.woff2">
+
+    <!--
+      Habilita o sistema de movimento antes da primeira pintura. O estado de
+      repouso é sempre visível: sem este script, ou com movimento reduzido,
+      nada fica escondido. O failsafe garante que uma falha de js/motion.js
+      nunca deixe conteúdo invisível — motion.js cancela o temporizador.
+    -->
+    <script>
+      (function () {
+        var root = document.documentElement;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        root.setAttribute("data-motion", "on");
+        window.__motionFailsafe = window.setTimeout(function () {
+          root.removeAttribute("data-motion");
+        }, 2500);
+      })();
+    </script>
+
+    <!--
+      Aplica o tema escolhido ANTES da folha de estilo, para não haver flash.
+      Sem escolha salva, o CSS segue prefers-color-scheme sozinho.
+      try/catch: localStorage lança em modo privado ou bloqueado.
+    -->
+    <script>
+      (function () {
+        try {
+          var theme = window.localStorage.getItem("theme");
+          if (theme === "light" || theme === "dark") {
+            document.documentElement.setAttribute("data-theme", theme);
+          }
+        } catch (error) {}
+      })();
+    </script>
+
+    <!-- Dados estruturados: identifica a organização para mecanismos de busca. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "404Devs",
+      "url": "{{meta.url}}",
+      "logo": "https://404devs.vercel.app/assets/apple-touch-icon.png",
+      "image": "https://404devs.vercel.app/assets/og-image.png",
+      "description": "{{structured.description}}",
+      "email": "404devsoficial@gmail.com",
+      "telephone": "+5517996142053",
+      "priceRange": "$$",
+      "areaServed": { "@type": "Country", "name": "{{structured.areaServed}}" },
+      "availableLanguage": ["pt-BR", "en"],
+      "knowsAbout": {{structured.knowsAbout}},
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://www.99freelas.com.br/user/404Devs.Ofc",
+        "https://www.instagram.com/404devs.ofc/",
+        "https://www.tiktok.com/@404devs.ofc"
+      ]
+    }
+    </script>
+    <link rel="stylesheet" href="/styles.min.css">
+  </head>
+
+  <body>
+    <a class="skip-link" href="#conteudo">{{a11y.skip}}</a>
+
+    <!-- Sprite: ícones + capas tipográficas dos projetos. Um bloco, referenciado
+         por <use>. As capas herdam fonte e cor da página (design.md E5). -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+      <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 8.5H3.56V20h3.38V8.5Zm.22-3.55C7.15 3.93 6.37 3.2 5.27 3.2c-1.1 0-1.88.73-1.88 1.75 0 1 .76 1.75 1.84 1.75h.02c1.12 0 1.91-.75 1.91-1.75ZM20.44 13.02c0-3.52-1.88-5.16-4.39-5.16-2.03 0-2.94 1.11-3.45 1.89V8.5H9.22c.04.82 0 11.5 0 11.5h3.38v-6.42c0-.34.03-.67.13-.9.27-.67.9-1.36 1.96-1.36 1.38 0 1.93 1.05 1.93 2.59V20H20v-6.98Z"/></symbol>
+      <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12.02c0 5.1 3.3 9.43 7.88 10.96.58.11.79-.25.79-.56 0-.27-.01-1.18-.02-2.13-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.76 1.2 1.76 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.29-5.23-5.72 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .97-.31 3.17 1.18a10.95 10.95 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.77.11 3.06.73.81 1.18 1.84 1.18 3.1 0 4.44-2.69 5.43-5.25 5.71.41.35.78 1.05.78 2.12 0 1.54-.01 2.77-.01 3.15 0 .31.21.68.8.56a11.53 11.53 0 0 0 7.87-10.96C23.5 5.65 18.35.5 12 .5Z"/></symbol>
+      <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 5L2 22l5.17-1.36a9.93 9.93 0 0 0 4.87 1.25h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2Zm0 18.13h-.01a8.27 8.27 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.25 8.25 0 0 1-1.26-4.4c0-4.57 3.72-8.28 8.29-8.28 2.21 0 4.29.86 5.85 2.43a8.22 8.22 0 0 1 2.42 5.86c0 4.57-3.72 8.25-8.3 8.25Zm4.55-6.18c-.25-.13-1.47-.73-1.7-.81-.23-.08-.4-.13-.56.13-.17.25-.64.8-.79.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.55-.43h-.48c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2s.86 2.32.98 2.48c.12.17 1.69 2.58 4.1 3.62.57.25 1.02.39 1.37.5.58.19 1.1.16 1.52.1.46-.07 1.42-.58 1.62-1.15.2-.56.2-1.04.14-1.14-.06-.1-.22-.17-.47-.29Z"/></symbol>
+
+      <symbol id="cover-granjatech" viewBox="0 0 640 440"><rect class="cover__bg" width="640" height="440"/><text class="cover__num" x="40" y="300">07</text><line class="cover__rule" x1="40" y1="332" x2="600" y2="332"/><text class="cover__sector" x="40" y="378">{{projects.items.granjatech.coverSector}}</text><text class="cover__name" x="40" y="408">GranjaTech</text></symbol>
+      <symbol id="cover-barberflow" viewBox="0 0 640 440"><rect class="cover__bg" width="640" height="440"/><text class="cover__num" x="40" y="300">06</text><line class="cover__rule" x1="40" y1="332" x2="600" y2="332"/><text class="cover__sector" x="40" y="378">{{projects.items.barberflow.coverSector}}</text><text class="cover__name" x="40" y="408">BarberFlow</text></symbol>
+      <symbol id="cover-agronutri" viewBox="0 0 640 440"><rect class="cover__bg" width="640" height="440"/><text class="cover__num" x="40" y="300">05</text><line class="cover__rule" x1="40" y1="332" x2="600" y2="332"/><text class="cover__sector" x="40" y="378">{{projects.items.agronutri.coverSector}}</text><text class="cover__name" x="40" y="408">AgroNutri</text></symbol>
+      <symbol id="cover-hotelos" viewBox="0 0 640 440"><rect class="cover__bg" width="640" height="440"/><text class="cover__num" x="40" y="300">04</text><line class="cover__rule" x1="40" y1="332" x2="600" y2="332"/><text class="cover__sector" x="40" y="378">{{projects.items.hotelos.coverSector}}</text><text class="cover__name" x="40" y="408">HotelOS</text></symbol>
+      <symbol id="cover-controle-imoveis" viewBox="0 0 640 440"><rect class="cover__bg" width="640" height="440"/><text class="cover__num" x="40" y="300">03</text><line class="cover__rule" x1="40" y1="332" x2="600" y2="332"/><text class="cover__sector" x="40" y="378">{{projects.items.controleImoveis.coverSector}}</text><text class="cover__name" x="40" y="408">Controle-Imóveis</text></symbol>
+      <symbol id="cover-vendas-estoque" viewBox="0 0 640 440"><rect class="cover__bg" width="640" height="440"/><text class="cover__num" x="40" y="300">02</text><line class="cover__rule" x1="40" y1="332" x2="600" y2="332"/><text class="cover__sector" x="40" y="378">{{projects.items.vendasEstoque.coverSector}}</text><text class="cover__name" x="40" y="408">{{projects.items.vendasEstoque.name}}</text></symbol>
+      <symbol id="cover-scraping-cnpj" viewBox="0 0 640 440"><rect class="cover__bg" width="640" height="440"/><text class="cover__num" x="40" y="300">01</text><line class="cover__rule" x1="40" y1="332" x2="600" y2="332"/><text class="cover__sector" x="40" y="378">{{projects.items.scrapingCnpj.coverSector}}</text><text class="cover__name" x="40" y="408">{{projects.items.scrapingCnpj.name}}</text></symbol>
+    </svg>
+
+    <!-- ══════════════════ BARRA ══════════════════ -->
+    <header class="bar g">
+      <div class="bar__row">
+        <a class="brand" href="#topo" aria-label="{{bar.brandLabel}}">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="currentColor" opacity=".08"/>
+            <g fill="currentColor" opacity=".34">
+              <rect x="14" y="17.5" width="36" height="4.5" rx="2.25"/>
+              <rect x="14" y="29.75" width="36" height="4.5" rx="2.25"/>
+              <rect x="14" y="42" width="36" height="4.5" rx="2.25"/>
+            </g>
+            <path d="M11 50.5 L53 13.5" stroke="#E8A33D" stroke-width="7" stroke-linecap="round" fill="none"/>
+          </svg>
+          <span><span class="brand__accent">404</span>DEVS</span>
+        </a>
+
+        <nav class="bar__links" aria-label="{{nav.mainLabel}}">
+          <a href="#projetos">{{nav.projects}}</a>
+          <a href="#servicos">{{nav.services}}</a>
+          <a href="#processo">{{nav.process}}</a>
+          <a href="#time">{{nav.team}}</a>
+          <a href="#faq">{{nav.faq}}</a>
+        </nav>
+
+        <div class="bar__tools">
+          <a class="bar__tool" data-lang-switch href="{{meta.switchHref}}" hreflang="{{meta.switchLang}}" lang="{{meta.switchLang}}" aria-label="{{tools.langSwitchLabel}}">{{tools.langSwitchShort}}</a>
+          <button
+            class="bar__tool"
+            type="button"
+            data-theme-toggle
+            aria-pressed="false"
+            aria-label="{{tools.themeToLight}}"
+            data-label-to-dark="{{tools.themeToDark}}"
+            data-label-to-light="{{tools.themeToLight}}"
+          ><span class="bar__tool-icon" aria-hidden="true">◐</span> {{tools.theme}}</button>
+          <a
+            class="btn btn--primary bar__cta"
+            href="https://wa.me/5517996142053"
+            target="_blank"
+            rel="noreferrer"
+          >{{cta.whatsapp}}</a>
+        </div>
+
+        <button
+          class="btn btn--ghost bar__toggle"
+          type="button"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="menu-principal"
+        >{{nav.menu}}</button>
+      </div>
+
+      <div class="bar__panel" id="menu-principal" data-nav-panel data-open="false">
+        <nav aria-label="{{nav.panelLabel}}">
+          <a href="#projetos">{{nav.projects}}</a>
+          <a href="#servicos">{{nav.services}}</a>
+          <a href="#processo">{{nav.process}}</a>
+          <a href="#time">{{nav.team}}</a>
+          <a href="#faq">{{nav.faq}}</a>
+        </nav>
+        <div class="bar__panel__tools">
+          <a class="bar__tool" data-lang-switch href="{{meta.switchHref}}" hreflang="{{meta.switchLang}}" lang="{{meta.switchLang}}" aria-label="{{tools.langSwitchLabel}}">{{tools.langSwitchShort}}</a>
+          <button
+            class="bar__tool"
+            type="button"
+            data-theme-toggle
+            aria-pressed="false"
+            aria-label="{{tools.themeToLight}}"
+            data-label-to-dark="{{tools.themeToDark}}"
+            data-label-to-light="{{tools.themeToLight}}"
+          ><span class="bar__tool-icon" aria-hidden="true">◐</span> {{tools.theme}}</button>
+        </div>
+        <a
+          class="btn btn--primary btn--block bar__panel__action"
+          href="https://wa.me/5517996142053"
+          target="_blank"
+          rel="noreferrer"
+        >{{cta.whatsapp}}</a>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <!-- ══════════════════ PRIMEIRA DOBRA ══════════════════ -->
+      <section class="hero g" id="topo">
+        <h1 class="hero__title" data-hero-step data-split>
+          {{hero.title}}
+        </h1>
+        <!--
+          Fatia o título em palavras ANTES da primeira pintura, para não haver
+          um frame com o texto inteiro. Só roda com movimento habilitado. Nós de
+          texto são divididos por espaço; .strike é tratado como uma palavra;
+          outros elementos são percorridos. O texto íntegro vai para aria-label.
+        -->
+        <script>
+          (function () {
+            if (document.documentElement.getAttribute("data-motion") !== "on") return;
+            var title = document.querySelector("[data-split]");
+            if (!title) return;
+            var index = 0;
+
+            function wrap(node) {
+              var outer = document.createElement("span");
+              outer.className = "w";
+              outer.setAttribute("aria-hidden", "true");
+              var inner = document.createElement("span");
+              inner.className = "w__in";
+              inner.style.setProperty("--i", index++);
+              inner.appendChild(node);
+              outer.appendChild(inner);
+              return outer;
+            }
+
+            function split(parent) {
+              Array.prototype.slice.call(parent.childNodes).forEach(function (node) {
+                if (node.nodeType === 3) {
+                  var parts = node.textContent.split(/(\s+)/);
+                  var frag = document.createDocumentFragment();
+                  parts.forEach(function (part) {
+                    if (!part) return;
+                    if (/^\s+$/.test(part)) frag.appendChild(document.createTextNode(" "));
+                    else frag.appendChild(wrap(document.createTextNode(part)));
+                  });
+                  parent.replaceChild(frag, node);
+                } else if (node.nodeType === 1) {
+                  if (node.classList.contains("strike")) {
+                    // wrap() move o nó para dentro do invólucro; guardar a
+                    // referência antes, senão o pai já não o contém.
+                    var next = node.nextSibling;
+                    parent.insertBefore(wrap(node), next);
+                  } else {
+                    split(node);
+                  }
+                }
+              });
+            }
+
+            title.setAttribute("aria-label", title.textContent.replace(/\s+/g, " ").trim());
+            split(title);
+            title.classList.add("is-split");
+            // O título sobe no primeiro frame pintado, sem esperar motion.js
+            // carregar: é o elemento de maior pintura da página (LCP). Dois
+            // frames garantem que o estado inicial foi aplicado antes da transição.
+            window.requestAnimationFrame(function () {
+              window.requestAnimationFrame(function () {
+                title.classList.add("is-entered");
+              });
+            });
+          })();
+        </script>
+
+        <dl class="hero__meta" data-hero-step>
+          <div>
+            <dt>{{hero.meta.cityLabel}}</dt>
+            <dd><time data-clock datetime="">--:--</time></dd>
+          </div>
+          <div>
+            <dt>{{hero.meta.teamLabel}}</dt>
+            <dd>{{hero.meta.team}}</dd>
+          </div>
+          <div>
+            <dt>{{hero.meta.legalLabel}}</dt>
+            <dd>{{hero.meta.legal}}</dd>
+          </div>
+          <div>
+            <dt>{{hero.meta.verifyLabel}}</dt>
+            <dd><a href="https://www.99freelas.com.br/user/404Devs.Ofc" target="_blank" rel="noreferrer">99Freelas ↗</a></dd>
+          </div>
+        </dl>
+
+        <p class="hero__lede" data-hero-step>
+          {{hero.lede}}
+        </p>
+
+        <p class="hero__actions" data-hero-step>
+          <a href="#projetos">{{hero.actionProjects}}</a>
+          <a href="https://wa.me/5517996142053" target="_blank" rel="noreferrer">{{hero.actionWhatsapp}}</a>
+        </p>
+      </section>
+
+      <!-- ══════════════════ § 01 · PROJETOS ══════════════════ -->
+      <section class="sec g" id="projetos">
+        <p class="sec__index">{{projects.index}}</p>
+        <h2 class="sec__title">{{projects.title}}</h2>
+        <p class="sec__lede">
+          {{projects.lede}}
+        </p>
+
+        <ol class="index" reversed data-index data-rules>
+          <li class="index__row" style="--i: 0">
+            <details class="index__item" id="p07" data-preview="cover-granjatech" open>
+              <summary>
+                <span class="index__num">07</span>
+                <span class="index__name">GranjaTech</span>
+                <span class="index__sector">{{projects.items.granjatech.sector}}</span>
+                <span class="index__what">{{projects.items.granjatech.what}}</span>
+                <span class="index__year">—</span>
+              </summary>
+              <div class="index__detail">
+                <div>
+                  <h3>{{projects.labels.before}}</h3>
+                  <p>{{projects.items.granjatech.before}}</p>
+                </div>
+                <div>
+                  <h3>{{projects.labels.built}}</h3>
+                  <p class="is-outcome">{{projects.items.granjatech.built}}</p>
+                </div>
+                <div>
+                  <h3>{{projects.labels.result}}</h3>
+                  <p><span class="pending">{{pending}}</span><br>{{projects.items.granjatech.resultNote}}</p>
+                </div>
+                <svg class="cover index__cover" role="img" aria-label="{{projects.items.granjatech.coverAlt}}"><use href="#cover-granjatech"/></svg>
+                <p class="index__stack">C# (.NET Core) · React · PostgreSQL · Docker · Azure CI/CD</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="index__row" style="--i: 1">
+            <details class="index__item" id="p06" data-preview="cover-barberflow">
+              <summary>
+                <span class="index__num">06</span>
+                <span class="index__name">BarberFlow</span>
+                <span class="index__sector">{{projects.items.barberflow.sector}}</span>
+                <span class="index__what">{{projects.items.barberflow.what}}</span>
+                <span class="index__year">—</span>
+              </summary>
+              <div class="index__detail">
+                <div>
+                  <h3>{{projects.labels.before}}</h3>
+                  <p>{{projects.items.barberflow.before}}</p>
+                </div>
+                <div>
+                  <h3>{{projects.labels.built}}</h3>
+                  <p class="is-outcome">{{projects.items.barberflow.built}}</p>
+                </div>
+                <div>
+                  <h3>{{projects.labels.result}}</h3>
+                  <p><span class="pending">{{pending}}</span></p>
+                </div>
+                <svg class="cover index__cover" role="img" aria-label="{{projects.items.barberflow.coverAlt}}"><use href="#cover-barberflow"/></svg>
+                <p class="index__stack"><a href="https://www.appbarberflow.com.br/" target="_blank" rel="noreferrer">{{projects.labels.viewSystem}}</a></p>
+              </div>
+            </details>
+          </li>
+
+          <li class="index__row" style="--i: 2">
+            <details class="index__item" id="p05" data-preview="cover-agronutri">
+              <summary>
+                <span class="index__num">05</span>
+                <span class="index__name">AgroNutri</span>
+                <span class="index__sector">{{projects.items.agronutri.sector}}</span>
+                <span class="index__what">{{projects.items.agronutri.what}}</span>
+                <span class="index__year">—</span>
+              </summary>
+              <div class="index__detail">
+                <div>
+                  <h3>{{projects.labels.before}}</h3>
+                  <p>{{projects.items.agronutri.before}}</p>
+                </div>
+                <div>
+                  <h3>{{projects.labels.built}}</h3>
+                  <p class="is-outcome">{{projects.items.agronutri.built}}</p>
+                </div>
+                <div>
+                  <h3>{{projects.labels.result}}</h3>
+                  <p><span class="pending">{{pending}}</span></p>
+                </div>
+                <svg class="cover index__cover" role="img" aria-label="{{projects.items.agronutri.coverAlt}}"><use href="#cover-agronutri"/></svg>
+              </div>
+            </details>
+          </li>
+
+          <li class="index__row" style="--i: 3">
+            <details class="index__item" id="p04" data-preview="cover-hotelos">
+              <summary>
+                <span class="index__num">04</span>
+                <span class="index__name">HotelOS</span>
+                <span class="index__sector">{{projects.items.hotelos.sector}}</span>
+                <span class="index__what">{{projects.items.hotelos.what}}</span>
+                <span class="index__year">—</span>
+              </summary>
+              <div class="index__detail">
+                <div>
+                  <h3>{{projects.labels.before}}</h3>
+                  <p>{{projects.items.hotelos.before}}</p>
+                </div>
+                <div>
+                  <h3>{{projects.labels.built}}</h3>
+                  <p class="is-outcome">{{projects.items.hotelos.built}}</p>
+                </div>
+                <div>
+                  <h3>{{projects.labels.result}}</h3>
+                  <p><span class="pending">{{pending}}</span></p>
+                </div>
+                <svg class="cover index__cover" role="img" aria-label="{{projects.items.hotelos.coverAlt}}"><use href="#cover-hotelos"/></svg>
+              </div>
+            </details>
+          </li>
+
+          <li class="index__row" style="--i: 4">
+            <details class="index__item" id="p03" data-preview="cover-controle-imoveis">
+              <summary>
+                <span class="index__num">03</span>
+                <span class="index__name">Controle-Imóveis</span>
+                <span class="index__sector">{{projects.items.controleImoveis.sector}}</span>
+                <span class="index__what">{{projects.items.controleImoveis.what}}</span>
+                <span class="index__year">—</span>
+              </summary>
+              <div class="index__detail">
+                <div>
+                  <h3>{{projects.labels.before}}</h3>
+                  <p>{{projects.items.controleImoveis.before}}</p>
+                </div>
+                <div>
+                  <h3>{{projects.labels.built}}</h3>
+                  <p class="is-outcome">{{projects.items.controleImoveis.built}}</p>
+                </div>
+                <div>
+                  <h3>{{projects.labels.result}}</h3>
+                  <p><span class="pending">{{pending}}</span></p>
+                </div>
+                <svg class="cover index__cover" role="img" aria-label="{{projects.items.controleImoveis.coverAlt}}"><use href="#cover-controle-imoveis"/></svg>
+              </div>
+            </details>
+          </li>
+
+          <li class="index__row" style="--i: 5">
+            <details class="index__item" id="p02" data-preview="cover-vendas-estoque">
+              <summary>
+                <span class="index__num">02</span>
+                <span class="index__name">{{projects.items.vendasEstoque.name}}</span>
+                <span class="index__sector">{{projects.items.vendasEstoque.sector}}</span>
+                <span class="index__what">{{projects.items.vendasEstoque.what}}</span>
+                <span class="index__year">2026</span>
+              </summary>
+              <div class="index__detail">
+                <div>
+                  <h3>{{projects.labels.before}}</h3>
+                  <p>{{projects.items.vendasEstoque.before}}</p>
+                </div>
+                <div>
+                  <h3>{{projects.labels.built}}</h3>
+                  <p class="is-outcome">{{projects.items.vendasEstoque.built}}</p>
+                </div>
+                <div>
+                  <h3>{{projects.labels.result}}</h3>
+                  <p><span class="pending">{{pending}}</span></p>
+                </div>
+                <svg class="cover index__cover" role="img" aria-label="{{projects.items.vendasEstoque.coverAlt}}"><use href="#cover-vendas-estoque"/></svg>
+              </div>
+            </details>
+          </li>
+
+          <li class="index__row" style="--i: 6">
+            <details class="index__item" id="p01" data-preview="cover-scraping-cnpj">
+              <summary>
+                <span class="index__num">01</span>
+                <span class="index__name">{{projects.items.scrapingCnpj.name}}</span>
+                <span class="index__sector">{{projects.items.scrapingCnpj.sector}}</span>
+                <span class="index__what">{{projects.items.scrapingCnpj.what}}</span>
+                <span class="index__year">2026</span>
+              </summary>
+              <div class="index__detail">
+                <div>
+                  <h3>{{projects.labels.before}}</h3>
+                  <p>{{projects.items.scrapingCnpj.before}}</p>
+                </div>
+                <div>
+                  <h3>{{projects.labels.built}}</h3>
+                  <p class="is-outcome">{{projects.items.scrapingCnpj.built}}</p>
+                </div>
+                <div>
+                  <h3>{{projects.labels.result}}</h3>
+                  <p><span class="pending">{{pending}}</span></p>
+                </div>
+                <svg class="cover index__cover" role="img" aria-label="{{projects.items.scrapingCnpj.coverAlt}}"><use href="#cover-scraping-cnpj"/></svg>
+              </div>
+            </details>
+          </li>
+        </ol>
+
+        <!-- Figura que acompanha o ponteiro. Só é renderizada em ponteiro fino
+             com movimento permitido; fora disso, display:none. -->
+        <figure class="index__preview" data-index-preview aria-hidden="true">
+          <svg class="cover"><use href="#cover-granjatech"/></svg>
+        </figure>
+      </section>
+
+      <!-- ══════════════════ § 02 · DEPOIMENTOS ══════════════════ -->
+      <section class="sec g" id="depoimentos">
+        <p class="sec__index">{{quotes.index}}</p>
+        <h2 class="sec__title">{{quotes.title}}</h2>
+
+        <div class="quotes" data-quotes data-count-format="{{quotes.countFormat}}" tabindex="0" aria-roledescription="{{quotes.roleDescription}}" aria-label="{{quotes.carouselLabel}}">
+          <ul class="quotes__list">
+            <li class="quote" data-quote data-active>
+              <blockquote>
+                <p class="quote__text" lang="pt-BR">{{quotes.items.0.text}}</p>
+                {{quotes.items.0.translation}}
+                <footer class="quote__meta">{{quotes.items.0.meta}}</footer>
+              </blockquote>
+            </li>
+            <li class="quote" data-quote>
+              <blockquote>
+                <p class="quote__text" lang="pt-BR">{{quotes.items.1.text}}</p>
+                {{quotes.items.1.translation}}
+                <footer class="quote__meta">{{quotes.items.1.meta}}</footer>
+              </blockquote>
+            </li>
+            <li class="quote" data-quote>
+              <blockquote>
+                <p class="quote__text" lang="pt-BR">{{quotes.items.2.text}}</p>
+                {{quotes.items.2.translation}}
+                <footer class="quote__meta">{{quotes.items.2.meta}}</footer>
+              </blockquote>
+            </li>
+            <li class="quote" data-quote>
+              <blockquote>
+                <p class="quote__text" lang="pt-BR">{{quotes.items.3.text}}</p>
+                {{quotes.items.3.translation}}
+                <footer class="quote__meta">{{quotes.items.3.meta}}</footer>
+              </blockquote>
+            </li>
+            <li class="quote" data-quote>
+              <blockquote>
+                <p class="quote__text" lang="pt-BR">{{quotes.items.4.text}}</p>
+                {{quotes.items.4.translation}}
+                <footer class="quote__meta">{{quotes.items.4.meta}}</footer>
+              </blockquote>
+            </li>
+          </ul>
+
+          <div class="quotes__nav">
+            <button type="button" data-quotes-prev aria-label="{{quotes.prev}}">‹</button>
+            <span data-quotes-count aria-live="polite">1 / 5</span>
+            <button type="button" data-quotes-next aria-label="{{quotes.next}}">›</button>
+          </div>
+        </div>
+
+        <div class="quotes__aside">
+          <p>
+            {{quotes.asideText}}
+            <a href="https://www.99freelas.com.br/user/404Devs.Ofc" target="_blank" rel="noreferrer">{{quotes.asideLink}}</a>
+          </p>
+          <p class="quotes__sectors">
+            {{quotes.sectors}}
+          </p>
+        </div>
+      </section>
+
+      <!-- ══════════════════ § 03 · SERVIÇOS ══════════════════ -->
+      <section class="sec g" id="servicos">
+        <p class="sec__index">{{services.index}}</p>
+        <h2 class="sec__title">{{services.title}}</h2>
+
+        <ol class="services">
+          <li class="service">
+            <span class="service__num">(01)</span>
+            <h3>{{services.items.0.title}}</h3>
+            <p>{{services.items.0.text}}</p>
+          </li>
+          <li class="service">
+            <span class="service__num">(02)</span>
+            <h3>{{services.items.1.title}}</h3>
+            <p>{{services.items.1.text}}</p>
+          </li>
+          <li class="service">
+            <span class="service__num">(03)</span>
+            <h3>{{services.items.2.title}}</h3>
+            <p>{{services.items.2.text}}</p>
+          </li>
+          <li class="service">
+            <span class="service__num">(04)</span>
+            <h3>{{services.items.3.title}}</h3>
+            <p>{{services.items.3.text}}</p>
+          </li>
+        </ol>
+
+        <p class="services__stack">
+          {{services.stack}}
+        </p>
+      </section>
+
+      <!-- ══════════════════ § 04 · PROCESSO ══════════════════ -->
+      <section class="sec g" id="processo">
+        <p class="sec__index">{{process.index}}</p>
+        <h2 class="sec__title">{{process.title}}</h2>
+        <p class="sec__lede">
+          {{process.lede}}
+        </p>
+
+        <ol class="steps">
+          <li class="step">
+            <span class="step__num">01</span>
+            <div class="step__body">
+              <h3>{{process.steps.0.title}}</h3>
+              <p>{{process.steps.0.text}}</p>
+            </div>
+            <div class="step__meta">
+              <div><b>{{process.labels.youGet}}</b><span>{{process.steps.0.deliverable}}</span></div>
+              <div><b>{{process.labels.deadline}}</b> <span class="pending">{{pending}}</span></div>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num">02</span>
+            <div class="step__body">
+              <h3>{{process.steps.1.title}}</h3>
+              <p>{{process.steps.1.text}}</p>
+            </div>
+            <div class="step__meta">
+              <div><b>{{process.labels.youGet}}</b><span>{{process.steps.1.deliverable}}</span></div>
+              <div><b>{{process.labels.deadline}}</b> <span class="pending">{{pending}}</span></div>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num">03</span>
+            <div class="step__body">
+              <h3>{{process.steps.2.title}}</h3>
+              <p>{{process.steps.2.text}}</p>
+            </div>
+            <div class="step__meta">
+              <div><b>{{process.labels.youGet}}</b><span>{{process.steps.2.deliverable}}</span></div>
+              <div><b>{{process.labels.deadline}}</b> <span class="pending">{{pending}}</span></div>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num">04</span>
+            <div class="step__body">
+              <h3>{{process.steps.3.title}}</h3>
+              <p>{{process.steps.3.text}}</p>
+            </div>
+            <div class="step__meta">
+              <div><b>{{process.labels.youGet}}</b><span>{{process.steps.3.deliverable}}</span></div>
+              <div><b>{{process.labels.deadline}}</b> <span>{{process.labels.ongoing}}</span></div>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ══════════════════ § 05 · O QUE ESTÁ INCLUSO ══════════════════ -->
+      <section class="sec g" id="incluso">
+        <p class="sec__index">{{terms.index}}</p>
+        <h2 class="sec__title">{{terms.title}}</h2>
+        <p class="sec__lede">
+          {{terms.lede}}
+        </p>
+
+        <dl class="sheet">
+          <dt>{{terms.items.contract.term}}</dt>
+          <dd><b>{{terms.items.contract.head}}</b><p>{{terms.items.contract.text}}</p></dd>
+          <dt>{{terms.items.invoice.term}}</dt>
+          <dd><b>{{terms.items.invoice.head}}</b><p>{{terms.items.invoice.text}}</p></dd>
+          <dt>{{terms.items.warranty.term}}</dt>
+          <dd><b>{{terms.items.warranty.head}}</b><p>{{terms.items.warranty.textBefore}} <span class="pending">{{pending}}</span> {{terms.items.warranty.textAfter}}</p></dd>
+          <dt>{{terms.items.training.term}}</dt>
+          <dd><b>{{terms.items.training.head}}</b><p>{{terms.items.training.text}}</p></dd>
+        </dl>
+      </section>
+
+      <!-- ══════════════════ § 06 · TIME ══════════════════ -->
+      <section class="sec g" id="time">
+        <p class="sec__index">{{team.index}}</p>
+        <h2 class="sec__title">{{team.title}}</h2>
+        <p class="sec__lede">
+          {{team.lede}}
+        </p>
+
+        <div class="team">
+          <article class="person">
+            <img src="/assets/img/team/samuel.webp" alt="Samuel Henrique" width="600" height="600" loading="lazy" decoding="async">
+            <h3>Samuel Henrique</h3>
+            <p>{{team.members.0.role}}</p>
+            <div class="person__links">
+              <a href="https://www.linkedin.com/in/samuel-henrique-92b1a3278" target="_blank" rel="noreferrer" aria-label="{{team.members.0.linkedinLabel}}"><svg width="14" height="14" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
+              <a href="https://github.com/samuel05015" target="_blank" rel="noreferrer" aria-label="{{team.members.0.githubLabel}}"><svg width="14" height="14" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+            </div>
+          </article>
+          <article class="person">
+            <img src="/assets/img/team/guilherme.webp" alt="Guilherme Henrique de Oliveira" width="600" height="600" loading="lazy" decoding="async">
+            <h3>Guilherme H. de Oliveira</h3>
+            <p>{{team.members.1.role}}</p>
+            <div class="person__links">
+              <a href="https://linkedin.com/in/guilherme--henrique" target="_blank" rel="noreferrer" aria-label="{{team.members.1.linkedinLabel}}"><svg width="14" height="14" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
+              <a href="https://github.com/GuilhermeOliveira0" target="_blank" rel="noreferrer" aria-label="{{team.members.1.githubLabel}}"><svg width="14" height="14" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+            </div>
+          </article>
+          <article class="person">
+            <img src="/assets/img/team/adryan.webp" alt="Adryan Francisco" width="600" height="600" loading="lazy" decoding="async">
+            <h3>Adryan Francisco</h3>
+            <p>{{team.members.2.role}}</p>
+            <div class="person__links">
+              <a href="https://www.linkedin.com/in/adryan-francisco" target="_blank" rel="noreferrer" aria-label="{{team.members.2.linkedinLabel}}"><svg width="14" height="14" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
+              <a href="https://github.com/Adryan-Francisco" target="_blank" rel="noreferrer" aria-label="{{team.members.2.githubLabel}}"><svg width="14" height="14" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+            </div>
+          </article>
+          <article class="person">
+            <img src="/assets/img/team/wendell.webp" alt="Wendell Nascimento" width="600" height="600" loading="lazy" decoding="async">
+            <h3>Wendell Nascimento</h3>
+            <p>{{team.members.3.role}}</p>
+            <div class="person__links">
+              <a href="https://www.linkedin.com/in/wendell-nascimento-0923a8244" target="_blank" rel="noreferrer" aria-label="{{team.members.3.linkedinLabel}}"><svg width="14" height="14" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
+              <a href="https://github.com/wendzera" target="_blank" rel="noreferrer" aria-label="{{team.members.3.githubLabel}}"><svg width="14" height="14" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ══════════════════ § 07 · PERGUNTAS FREQUENTES ══════════════════ -->
+      <section class="sec g" id="faq">
+        <p class="sec__index">{{faq.index}}</p>
+        <h2 class="sec__title">{{faq.title}}</h2>
+
+        <div class="accordion faq">
+          <details class="accordion__item">
+            <summary>{{faq.items.0.q}}</summary>
+            <div class="accordion__answer"><span class="pending">{{pending}}</span> {{faq.items.0.a}}</div>
+          </details>
+          <details class="accordion__item">
+            <summary>{{faq.items.1.q}}</summary>
+            <div class="accordion__answer"><span class="pending">{{pending}}</span> {{faq.items.1.a}}</div>
+          </details>
+          <details class="accordion__item">
+            <summary>{{faq.items.2.q}}</summary>
+            <div class="accordion__answer">{{faq.items.2.a}}</div>
+          </details>
+          <details class="accordion__item">
+            <summary>{{faq.items.3.q}}</summary>
+            <div class="accordion__answer">{{faq.items.3.a}}</div>
+          </details>
+          <details class="accordion__item">
+            <summary>{{faq.items.4.q}}</summary>
+            <div class="accordion__answer">{{faq.items.4.aBefore}} <span class="pending">{{pending}}</span> {{faq.items.4.aAfter}}</div>
+          </details>
+          <details class="accordion__item">
+            <summary>{{faq.items.5.q}}</summary>
+            <div class="accordion__answer">{{faq.items.5.a}}</div>
+          </details>
+          <details class="accordion__item">
+            <summary>{{faq.items.6.q}}</summary>
+            <div class="accordion__answer"><span class="pending">{{pending}}</span> {{faq.items.6.a}}</div>
+          </details>
+          <details class="accordion__item">
+            <summary>{{faq.items.7.q}}</summary>
+            <div class="accordion__answer"><span class="pending">{{pending}}</span> {{faq.items.7.a}}</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- ══════════════════ § 08 · CONTATO — bloco âmbar ══════════════════ -->
+      <section class="cta g" id="contato">
+        <p class="cta__index">{{contact.index}}</p>
+        <h2 class="cta__title">{{contact.title}}</h2>
+
+        <div class="cta__aside">
+          <p>{{contact.lede}}</p>
+          <dl>
+            <div>
+              <dt>WhatsApp</dt>
+              <dd><a href="https://wa.me/5517996142053" target="_blank" rel="noreferrer">(17) 99614-2053 ↗</a></dd>
+            </div>
+            <div>
+              <dt>{{contact.emailLabel}}</dt>
+              <dd><a href="mailto:404devsoficial@gmail.com">404devsoficial@gmail.com</a></dd>
+            </div>
+            <div>
+              <dt>{{contact.hoursLabel}}</dt>
+              <dd>{{contact.hours}}</dd>
+            </div>
+          </dl>
+        </div>
+
+        <form
+          class="cta__form"
+          data-contact-form
+          novalidate
+          data-msg-name="{{form.msgName}}"
+          data-msg-contact="{{form.msgContact}}"
+          data-msg-invalid="{{form.msgInvalid}}"
+          data-msg-sending="{{form.msgSending}}"
+          data-msg-success="{{form.msgSuccess}}"
+          data-msg-failure="{{form.msgFailure}}"
+        >
+          <div class="field">
+            <label for="campo-nome">{{form.name}}</label>
+            <input id="campo-nome" name="nome" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="campo-contato">{{form.contact}}</label>
+            <input id="campo-contato" name="contato" type="text" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="campo-segmento">{{form.segment}}</label>
+            <input id="campo-segmento" name="segmento" type="text" placeholder="{{form.segmentPlaceholder}}">
+          </div>
+          <div class="field">
+            <label for="campo-mensagem">{{form.message}}</label>
+            <textarea id="campo-mensagem" name="mensagem" rows="5" placeholder="{{form.messagePlaceholder}}"></textarea>
+          </div>
+
+          <!-- Armadilha anti-spam: invisível para pessoas, preenchida por robôs. -->
+          <div class="sr-only" aria-hidden="true">
+            <label for="campo-empresa">{{form.honeypot}}</label>
+            <input id="campo-empresa" name="empresa" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button class="btn btn--primary" type="submit" data-contact-submit>{{form.submit}}</button>
+          <p class="notice" data-contact-notice role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <!-- ══════════════════ RODAPÉ ══════════════════ -->
+    <footer class="footer g">
+      <div class="c1-5">
+        <a class="brand" href="#topo" aria-label="{{bar.brandLabel}}">
+          <span><span class="brand__accent">404</span>DEVS</span>
+        </a>
+        <p>{{footer.tagline}}</p>
+        <p>CNPJ <span class="pending">{{pending}}</span></p>
+      </div>
+
+      <div class="c7-9">
+        <h3>{{footer.contactHead}}</h3>
+        <ul>
+          <li><a href="https://wa.me/5517996142053" target="_blank" rel="noreferrer">WhatsApp ↗</a></li>
+          <li><a href="mailto:404devsoficial@gmail.com">404devsoficial@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="c10-12">
+        <h3>{{footer.verifyHead}}</h3>
+        <ul>
+          <li><a href="https://www.99freelas.com.br/user/404Devs.Ofc" target="_blank" rel="noreferrer">99Freelas ↗</a></li>
+          <li><a href="https://www.instagram.com/404devs.ofc/" target="_blank" rel="noreferrer">Instagram ↗</a></li>
+          <li><a href="https://www.tiktok.com/@404devs.ofc" target="_blank" rel="noreferrer">TikTok ↗</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__end">
+        <span>© 2026 404Devs</span>
+        <span>{{footer.hours}}</span>
+        <a href="#topo">{{footer.backToTop}}</a>
+      </div>
+    </footer>
+
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/theme.js" defer></script>
+    <script src="/js/motion.js" defer></script>
+    <script src="/js/clock.js" defer></script>
+    <script src="/js/index-preview.js" defer></script>
+    <script src="/js/quotes.js" defer></script>
+    <script src="/js/form.js" defer></script>
+  </body>
+</html>

@@ -265,3 +265,32 @@ node_modules/
 - [ ] Todos os links externos funcionam e abrem em nova aba
 - [ ] Nenhum texto de placeholder ou "lorem" sobrando
 - [ ] Zero erro no console
+
+---
+
+## Fluxo de conteúdo e idioma (a partir de 14/09/2026)
+
+**`index.html` e `en/index.html` são gerados. Não edite os dois diretamente.**
+
+```
+src/index.html        ← template único, com marcadores {{chave}}
+content/pt-BR.json    ← todo o texto em português
+content/en.json       ← o mesmo conjunto de chaves, em inglês
+        │
+        └─ npm run build ─► styles.min.css + index.html + en/index.html
+```
+
+- **Para mudar um texto:** edite a chave em `content/pt-BR.json` **e** em `content/en.json`,
+  rode `npm run build`, versione os três arquivos gerados. O build falha se uma chave
+  existir num idioma e não no outro, e avisa se houver chave sem uso no template.
+- **Para mudar estrutura ou marcação:** edite `src/index.html`. Todo caminho de recurso
+  precisa começar em `/` (o lint do build barra caminho relativo, que quebraria em `/en/`).
+- **Strings que o JS escreve** (mensagens do formulário, contador de depoimentos, rótulos do
+  tema) ficam em atributos `data-*` do template; o JS lê de lá e não conhece idioma.
+- **Depoimentos em inglês** mantêm o original em português íntegro e recebem a tradução
+  abaixo, marcada como tradução (`quotes.items.N.translation`). Nunca substitua o original.
+- **Pendências comerciais** (`<span class="pending">`) ficam no template; só o texto
+  "A definir / To be defined" (chave `pending`) está no JSON. A contagem deve ser igual nos
+  dois idiomas.
+- **Tema:** o CSS segue `prefers-color-scheme`; a escolha explícita do visitante fica em
+  `localStorage.theme` e é aplicada por script inline no `<head>` antes da folha de estilo.

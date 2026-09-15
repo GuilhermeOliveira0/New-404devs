@@ -5,9 +5,7 @@
    Regra que governa todo este arquivo: o estado de repouso de todo conteúdo é
    VISÍVEL. Os estados iniciais de animação só existem sob [data-motion="on"],
    atributo que um script no <head> aplica apenas quando há script ativo e o
-   visitante não pediu movimento reduzido. Sem script, sem movimento reduzido
-   mal configurado e sem falha de carregamento, a página é legível do mesmo
-   jeito. Ver design.md D6 e a spec design-system.
+   visitante não pediu movimento reduzido. Ver design.md D6 e E11.
    ============================================================================ */
 
 /* ── Acessibilidade ────────────────────────────────────────────────────── */
@@ -42,13 +40,14 @@
 }
 
 /* ── Movimento · 1. sequência de abertura ──────────────────────────────── */
+/* O título é tratado à parte (palavras); os outros passos sobem inteiros. */
 
-[data-motion="on"] [data-hero-step] {
+[data-motion="on"] [data-hero-step]:not(.is-split) {
   opacity: 0;
   transform: translateY(var(--space-3));
 }
 
-[data-motion="on"] [data-hero-step].is-entered {
+[data-motion="on"] [data-hero-step]:not(.is-split).is-entered {
   opacity: 1;
   transform: none;
   transition:
@@ -56,8 +55,33 @@
     transform var(--duration-enter) var(--ease-out);
 }
 
+/* ── Movimento · 1b. título palavra a palavra por máscara ──────────────── */
+/* .w é o invólucro com overflow oculto; .w__in é a palavra que sobe.
+   Sem script o título nunca é fatiado; sem [data-motion] nada se esconde. */
+
+.w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: .08em;
+  margin-bottom: -.08em;
+}
+
+.w__in {
+  display: inline-block;
+}
+
+[data-motion="on"] .is-split .w__in {
+  transform: translateY(110%);
+}
+
+[data-motion="on"] .is-split.is-entered .w__in {
+  transform: none;
+  transition: transform var(--duration-word) var(--ease-out)
+    calc(var(--i, 0) * var(--stagger-word));
+}
+
 /* ── Movimento · 2. momento assinatura ─────────────────────────────────── */
-/* O traço que risca as palavras da primeira dobra. Único no site. */
 
 [data-motion="on"] .strike::after {
   transform: scaleX(0);
@@ -83,6 +107,35 @@
     transform var(--duration-reveal) var(--ease-out);
 }
 
+/* ── Movimento · 3b. réguas que se desenham ────────────────────────────── */
+/* Cada item de [data-rules] desenha a própria régua (::before) da esquerda
+   para a direita, em cascata por --i. Em repouso a régua está completa. */
+
+[data-rules] > * {
+  position: relative;
+}
+
+[data-rules] > *::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--rule);
+  transform-origin: left;
+}
+
+[data-motion="on"] [data-rules]:not(.is-revealed) > *::before {
+  transform: scaleX(0);
+}
+
+[data-motion="on"] [data-rules].is-revealed > *::before {
+  transform: scaleX(1);
+  transition: transform var(--duration-reveal) var(--ease-out)
+    calc(var(--i, 0) * var(--stagger-rule));
+}
+
 /* ── Movimento · 4. painel de navegação ────────────────────────────────── */
 
 [data-motion="on"] .bar__panel[data-open="true"] {
@@ -94,4 +147,35 @@
     opacity: 0;
     transform: translateY(calc(var(--space-2) * -1));
   }
+}
+
+/* ── Movimento · 5. troca de depoimento (uma vez por troca, sem laço) ──── */
+
+[data-motion="on"] .quotes.is-ready .quote[data-active] {
+  animation: quote-in var(--duration-enter) var(--ease-out);
+}
+
+@keyframes quote-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-2));
+  }
+}
+
+/* ── Movimento · 6. cortina de tema (View Transitions) ─────────────────── */
+/* O snapshot novo é recortado por clip-path via script; o padrão de crossfade
+   é desligado para não competir com a cortina. */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+}
+
+[data-theme-toggle] {
+  view-transition-name: theme-toggle;
 }

@@ -1,51 +1,69 @@
 /* ============================================================================
    03 · LAYOUT
-   Container, ritmo de seção, barra de navegação e rodapé.
+   Grid de 12 colunas sem largura máxima, ritmo de seção, barra e rodapé.
    Depende de 01-tokens e 02-base. Não conhece componente nem seção específica.
+
+   Direção "Ordem de Serviço" (design.md E1–E4): não existe container único.
+   Texto corrido vive em coluna estreita; títulos e réguas atravessam a página;
+   deslocamentos são declarados por grid-column, nunca por margem mágica.
    ============================================================================ */
 
-/* ── Container ─────────────────────────────────────────────────────────── */
+/* ── Grid ──────────────────────────────────────────────────────────────── */
 
-.wrap {
-  width: 100%;
-  max-width: var(--measure-container);
-  margin-inline: auto;
+.g {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--grid-gap);
   padding-inline: var(--measure-gutter);
 }
 
+.g > * {
+  min-width: 0;
+}
+
+/* Colunas explícitas usadas no documento. A leitura é "de–até". */
+.c1-5   { grid-column: 1 / span 5; }
+.c7-9   { grid-column: 7 / span 3; }
+.c10-12 { grid-column: 10 / -1; }
+
 /* ── Seção ─────────────────────────────────────────────────────────────── */
 
-.section {
+.sec {
+  position: relative;
+  row-gap: var(--space-6);
+  padding-block: var(--space-16);
   border-top: 1px solid var(--rule);
-  padding-block: var(--space-12);
+  overflow-x: clip;
 }
 
-.section--flush {
-  border-top: 0;
+/* Índice de seção: o único texto pequeno em mono fora dos metadados (E4). */
+.sec__index {
+  grid-column: 11 / -1;
+  grid-row: 1;
+  justify-self: end;
+  align-self: start;
+  font-family: var(--font-label);
+  font-size: var(--size-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  white-space: nowrap;
 }
 
-/* Malha de pauta: alinhada às colunas reais do conteúdo, não textura solta. */
-.section--ledger {
-  background-image: repeating-linear-gradient(
-    to right,
-    var(--ledger) 0 1px,
-    transparent 1px 88px
-  );
+.sec__title {
+  grid-column: 1 / span 9;
+  grid-row: 1;
+  font-size: var(--size-heading);
 }
 
-.section__head {
-  display: grid;
-  gap: var(--space-3);
-  max-width: var(--measure-prose);
-  margin-bottom: var(--space-8);
-}
-
-.section__head p:last-child {
-  color: var(--text-secondary);
+.sec__lede {
+  grid-column: 1 / span 6;
   font-size: var(--size-lede);
+  color: var(--text-secondary);
+  max-width: var(--measure-prose);
 }
 
-/* ── Barra de navegação ────────────────────────────────────────────────── */
+/* ── Barra ─────────────────────────────────────────────────────────────── */
 
 .bar {
   position: sticky;
@@ -56,6 +74,7 @@
 }
 
 .bar__row {
+  grid-column: 1 / -1;
   display: flex;
   align-items: center;
   gap: var(--space-5);
@@ -68,23 +87,85 @@
   margin-left: auto;
 }
 
+/* Sublinhado que cresce: entra pela esquerda, sai pela direita (E11). */
 .bar__links a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--measure-tap);
   color: var(--text-secondary);
   font-size: var(--size-small);
   font-weight: var(--weight-medium);
   transition: color var(--duration-micro) var(--ease-micro);
 }
 
-.bar__links a:hover {
+.bar__links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--space-2) + 2px);
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--duration-enter) var(--ease-out);
+}
+
+.bar__links a:hover,
+.bar__links a:focus-visible {
   color: var(--text-primary);
 }
 
-.bar .bar__cta {
-  margin-left: var(--space-5);
+.bar__links a:hover::after,
+.bar__links a:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
-/* Especificidade de 2 classes: .btn na camada 04 vem depois na cascata e
-   venceria um seletor de classe unica. */
+/* Ferramentas: idioma e tema, em mono, antes do botão de contato (E13). */
+.bar__tools {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.bar .bar__tool {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--measure-tap);
+  min-width: var(--measure-tap);
+  padding: 0 var(--space-2);
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-label);
+  font-size: var(--size-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  transition: color var(--duration-micro) var(--ease-micro);
+}
+
+.bar .bar__tool:hover,
+.bar .bar__tool:focus-visible {
+  color: var(--text-primary);
+}
+
+.bar__tool-icon {
+  display: inline-block;
+  transition: transform var(--duration-enter) var(--ease-out);
+}
+
+.bar .bar__tool[aria-pressed="true"] .bar__tool-icon {
+  transform: rotate(180deg);
+}
+
+/* Especificidade de 2 classes: .btn na camada 04 venceria classe única. */
+.bar .bar__cta {
+  margin-left: var(--space-2);
+}
+
 .bar .bar__toggle {
   display: none;
   margin-left: auto;
@@ -92,6 +173,7 @@
 
 .bar__panel {
   display: none;
+  grid-column: 1 / -1;
   border-top: 1px solid var(--rule);
   padding-block: var(--space-4) var(--space-5);
 }
@@ -100,11 +182,7 @@
   display: block;
 }
 
-.bar__panel ul {
-  display: grid;
-}
-
-.bar__panel a {
+.bar__panel nav a {
   display: flex;
   align-items: center;
   min-height: var(--measure-tap);
@@ -113,8 +191,14 @@
   font-weight: var(--weight-medium);
 }
 
+.bar__panel__tools {
+  display: flex;
+  gap: var(--space-4);
+  padding-block: var(--space-3);
+}
+
 .bar__panel__action {
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
 }
 
 /* ── Marca ─────────────────────────────────────────────────────────────── */
@@ -123,9 +207,9 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  min-height: var(--measure-tap);
   font-family: var(--font-display);
   font-weight: var(--weight-black);
-  min-height: var(--measure-tap);
   font-size: var(--size-subhead);
   letter-spacing: var(--tracking-heading);
 }
@@ -140,43 +224,29 @@
   color: var(--accent);
 }
 
-/* ── Grades reutilizáveis ──────────────────────────────────────────────── */
-
-.grid {
-  display: grid;
-  gap: var(--space-4);
-}
-
-.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-
 /* ── Rodapé ────────────────────────────────────────────────────────────── */
 
 .footer {
-  border-top: 1px solid var(--rule);
+  row-gap: var(--space-6);
   padding-block: var(--space-10) var(--space-6);
+  border-top: 1px solid var(--rule);
 }
 
-.footer__grid {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  gap: var(--space-6);
-}
-
-.footer__grid h3 {
+.footer h3 {
   margin-bottom: var(--space-3);
   font-family: var(--font-label);
-  font-size: var(--size-label-sm);
+  font-size: var(--size-label);
   font-weight: var(--weight-medium);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--text-tertiary);
 }
 
-.footer__grid ul {
+.footer ul {
   display: grid;
 }
 
-.footer__grid a {
+.footer a {
   display: inline-flex;
   align-items: center;
   min-height: var(--measure-tap);
@@ -185,25 +255,26 @@
   transition: color var(--duration-micro) var(--ease-micro);
 }
 
-.footer__grid a:hover {
+.footer a:hover,
+.footer a:focus-visible {
   color: var(--accent);
 }
 
-.footer__grid p {
+.footer p {
   color: var(--text-secondary);
   font-size: var(--size-small);
 }
 
 .footer__end {
+  grid-column: 1 / -1;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: var(--space-4);
-  margin-top: var(--space-8);
   padding-top: var(--space-4);
   border-top: 1px solid var(--rule);
   font-family: var(--font-label);
-  font-size: var(--size-label-sm);
+  font-size: var(--size-label);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--text-tertiary);
@@ -213,7 +284,7 @@
 
 @media (max-width: 900px) {
   .bar__links,
-  .bar .bar__cta {
+  .bar__tools {
     display: none;
   }
 
@@ -221,29 +292,32 @@
     display: inline-flex;
   }
 
-  .grid--3 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .sec__title {
+    grid-column: 1 / span 12;
+    grid-row: auto;
   }
 
-  .footer__grid {
-    grid-template-columns: 1fr 1fr;
+  .sec__index {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    justify-self: start;
+    order: -1;
+  }
+
+  .sec__lede {
+    grid-column: 1 / -1;
   }
 }
 
-@media (max-width: 620px) {
-  .section {
-    padding-block: var(--space-10);
+@media (max-width: 720px) {
+  .sec {
+    padding-block: var(--space-12);
+    row-gap: var(--space-5);
   }
 
-  .section__head {
-    margin-bottom: var(--space-6);
-  }
-
-  .grid--3 {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .footer__grid {
-    grid-template-columns: minmax(0, 1fr);
+  .c1-5,
+  .c7-9,
+  .c10-12 {
+    grid-column: 1 / -1;
   }
 }
