@@ -1,26 +1,21 @@
 {
   "pending": "A definir",
-
   "head": {
     "title": "404Devs · Sistemas de gestão sob medida",
     "description": "Quatro desenvolvedores. Sistemas de gestão, sites e aplicativos para empresas que precisam sair da planilha e do caderno. CNPJ ativo, com nota fiscal.",
     "ogImageAlt": "404Devs — Tiramos a sua operação da planilha e do caderno"
   },
-
   "structured": {
     "description": "Sistemas de gestão, sites e aplicativos sob medida para pequenas e médias empresas.",
     "areaServed": "Brasil",
     "knowsAbout": "[\"Desenvolvimento de sistemas de gestão\", \"Desenvolvimento web\", \"Integração de sistemas\", \"Automação de processos\"]"
   },
-
   "a11y": {
     "skip": "Pular para o conteúdo"
   },
-
   "bar": {
     "brandLabel": "404Devs, ir para o topo"
   },
-
   "nav": {
     "mainLabel": "Principal",
     "panelLabel": "Principal, telas estreitas",
@@ -31,7 +26,6 @@
     "team": "Time",
     "faq": "FAQ"
   },
-
   "tools": {
     "langSwitchShort": "EN",
     "langSwitchLabel": "Read this site in English",
@@ -39,11 +33,9 @@
     "themeToDark": "Ativar tema escuro",
     "themeToLight": "Ativar tema claro"
   },
-
   "cta": {
     "whatsapp": "Falar no WhatsApp"
   },
-
   "hero": {
     "title": "Tiramos a sua operação\n          <span class=\"hero__shift\">da <span class=\"strike\" data-signature>planilha</span> e do <span class=\"strike\" data-signature>caderno</span>.</span>",
     "meta": {
@@ -58,7 +50,6 @@
     "actionProjects": "Ver o que já entregamos ↓",
     "actionWhatsapp": "Falar no WhatsApp →"
   },
-
   "projects": {
     "index": "§ 01 · Índice",
     "title": "Sete sistemas rodando, em sete setores diferentes.",
@@ -131,7 +122,6 @@
       }
     }
   },
-
   "quotes": {
     "index": "§ 02 · Avaliações",
     "title": "O que os clientes escreveram, palavra por palavra.",
@@ -140,6 +130,7 @@
     "countFormat": "{n} / {total}",
     "prev": "Depoimento anterior",
     "next": "Próximo depoimento",
+    "goTo": "Ir para o depoimento {n}",
     "asideText": "Reproduzidas na íntegra, sem edição.",
     "asideLink": "Ver todas as avaliações no 99Freelas ↗",
     "sectors": "Avicultura · Barbearia · Nutrição animal · Hotelaria · Odontologia · Imobiliário · Indústria de alimentos · Educação",
@@ -171,7 +162,6 @@
       }
     ]
   },
-
   "services": {
     "index": "§ 03 · Serviços",
     "title": "O que a gente resolve.",
@@ -195,7 +185,6 @@
       }
     ]
   },
-
   "process": {
     "index": "§ 04 · Processo",
     "title": "Você acompanha a construção do começo ao fim.",
@@ -228,7 +217,6 @@
       }
     ]
   },
-
   "terms": {
     "index": "§ 05 · Condições",
     "title": "Tudo por escrito, antes de começar.",
@@ -257,34 +245,72 @@
       }
     }
   },
-
   "team": {
     "index": "§ 06 · Quem faz",
     "title": "Quatro pessoas, com nome e sobrenome.",
     "lede": "Você fala direto com quem escreve o código. Sem intermediário e sem gerente de conta repassando recado.",
     "members": [
-      { "role": "Front-end e interfaces", "linkedinLabel": "LinkedIn de Samuel Henrique", "githubLabel": "GitHub de Samuel Henrique" },
-      { "role": "Full stack e QA", "linkedinLabel": "LinkedIn de Guilherme Henrique de Oliveira", "githubLabel": "GitHub de Guilherme Henrique de Oliveira" },
-      { "role": "Back-end e arquitetura", "linkedinLabel": "LinkedIn de Adryan Francisco", "githubLabel": "GitHub de Adryan Francisco" },
-      { "role": "Back-end e cibersegurança", "linkedinLabel": "LinkedIn de Wendell Nascimento", "githubLabel": "GitHub de Wendell Nascimento" }
+      {
+        "role": "Front-end e interfaces",
+        "linkedinLabel": "LinkedIn de Samuel Henrique",
+        "githubLabel": "GitHub de Samuel Henrique"
+      },
+      {
+        "role": "Full stack e QA",
+        "linkedinLabel": "LinkedIn de Guilherme Henrique de Oliveira",
+        "githubLabel": "GitHub de Guilherme Henrique de Oliveira"
+      },
+      {
+        "role": "Back-end e arquitetura",
+        "linkedinLabel": "LinkedIn de Adryan Francisco",
+        "githubLabel": "GitHub de Adryan Francisco"
+      },
+      {
+        "role": "Back-end e cibersegurança",
+        "linkedinLabel": "LinkedIn de Wendell Nascimento",
+        "githubLabel": "GitHub de Wendell Nascimento"
+      }
     ]
   },
-
   "faq": {
     "index": "§ 07 · Perguntas",
     "title": "O que todo mundo pergunta antes de fechar.",
     "items": [
-      { "q": "Quanto custa um projeto?", "a": "O valor depende do escopo. Assim que a faixa por categoria estiver definida, ela aparece aqui — até lá, fale com a gente para receber uma estimativa." },
-      { "q": "Quanto tempo leva?", "a": "O prazo típico por tipo de projeto será publicado aqui." },
-      { "q": "Vocês emitem nota fiscal?", "a": "Sim. Temos CNPJ ativo e emitimos nota fiscal em todo projeto." },
-      { "q": "Trabalham com contrato?", "a": "Sim. Escopo, prazo e valor ficam definidos por escrito antes do início do desenvolvimento." },
-      { "q": "E depois da entrega? Tem suporte?", "aBefore": "Sim. Defeito encontrado depois da entrega é corrigido sem cobrança por", "aAfter": "dias, e seguimos disponíveis para melhorias evolutivas." },
-      { "q": "Atendem fora da região?", "a": "Sim, atendemos remoto para todo o Brasil. Todos os projetos do nosso portfólio foram entregues assim." },
-      { "q": "De quem fica o código do sistema?", "a": "A política de titularidade do código entregue será publicada aqui." },
-      { "q": "Como funciona o pagamento?", "a": "Entrada, parcelas e marcos de entrega serão detalhados aqui." }
+      {
+        "q": "Quanto custa um projeto?",
+        "a": "O valor depende do escopo. Assim que a faixa por categoria estiver definida, ela aparece aqui — até lá, fale com a gente para receber uma estimativa."
+      },
+      {
+        "q": "Quanto tempo leva?",
+        "a": "O prazo típico por tipo de projeto será publicado aqui."
+      },
+      {
+        "q": "Vocês emitem nota fiscal?",
+        "a": "Sim. Temos CNPJ ativo e emitimos nota fiscal em todo projeto."
+      },
+      {
+        "q": "Trabalham com contrato?",
+        "a": "Sim. Escopo, prazo e valor ficam definidos por escrito antes do início do desenvolvimento."
+      },
+      {
+        "q": "E depois da entrega? Tem suporte?",
+        "aBefore": "Sim. Defeito encontrado depois da entrega é corrigido sem cobrança por",
+        "aAfter": "dias, e seguimos disponíveis para melhorias evolutivas."
+      },
+      {
+        "q": "Atendem fora da região?",
+        "a": "Sim, atendemos remoto para todo o Brasil. Todos os projetos do nosso portfólio foram entregues assim."
+      },
+      {
+        "q": "De quem fica o código do sistema?",
+        "a": "A política de titularidade do código entregue será publicada aqui."
+      },
+      {
+        "q": "Como funciona o pagamento?",
+        "a": "Entrada, parcelas e marcos de entrega serão detalhados aqui."
+      }
     ]
   },
-
   "contact": {
     "index": "§ 08 · Contato",
     "title": "Conta pra gente o que trava o seu dia.",
@@ -293,7 +319,6 @@
     "hoursLabel": "Atendimento",
     "hours": "Segunda a sexta, das 9h às 18h · Remoto, todo o Brasil"
   },
-
   "form": {
     "name": "Nome",
     "contact": "E-mail ou WhatsApp",
@@ -310,7 +335,6 @@
     "msgSuccess": "Mensagem enviada. Respondemos em até 24 horas úteis.",
     "msgFailure": "Não conseguimos enviar agora. Fale com a gente no WhatsApp:"
   },
-
   "footer": {
     "tagline": "Sistemas de gestão, sites e aplicativos sob medida para pequenas e médias empresas.",
     "contactHead": "Contato",

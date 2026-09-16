@@ -3,20 +3,10 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://404devs.vercel.app/</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://404devs.vercel.app/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://404devs.vercel.app/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://404devs.vercel.app/"/>
-  </url>
-  <url>
-    <loc>https://404devs.vercel.app/en/</loc>
-    <lastmod>2026-09-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://404devs.vercel.app/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://404devs.vercel.app/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://404devs.vercel.app/"/>
   </url>
 </urlset>
