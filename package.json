@@ -1,0 +1,14 @@
+{
+  "name": "404devs-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site institucional da 404Devs",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "python -m http.server 4040 --bind 127.0.0.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

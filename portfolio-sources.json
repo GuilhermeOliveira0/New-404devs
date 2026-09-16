@@ -1,0 +1,274 @@
+[
+  {
+    "id": "501052",
+    "images": [
+      {
+        "src": "assets/projects/granjatech/01.webp",
+        "thumb": "assets/projects/granjatech/01-thumb.webp",
+        "width": 1913,
+        "height": 920,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/009f2b6c-f0de-43d6-9e8f-05a8ac649933/captura-de-tela-2026-03-09-140636.png?id=5577112&token=009f2b6c-f0de-43d6-9e8f-05a8ac649933&nome=captura-de-tela-2026-03-09-140636&type=.png"
+      },
+      {
+        "src": "assets/projects/granjatech/02.webp",
+        "thumb": "assets/projects/granjatech/02-thumb.webp",
+        "width": 1916,
+        "height": 915,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/935faa42-ba3f-49c2-ac43-1b19b0c15143/captura-de-tela-2026-03-09-140649.png?id=5577113&token=935faa42-ba3f-49c2-ac43-1b19b0c15143&nome=captura-de-tela-2026-03-09-140649&type=.png"
+      },
+      {
+        "src": "assets/projects/granjatech/03.webp",
+        "thumb": "assets/projects/granjatech/03-thumb.webp",
+        "width": 1913,
+        "height": 914,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/04308013-e338-45c9-afc6-72eb8d3947ac/captura-de-tela-2026-03-09-140706.png?id=5577110&token=04308013-e338-45c9-afc6-72eb8d3947ac&nome=captura-de-tela-2026-03-09-140706&type=.png"
+      },
+      {
+        "src": "assets/projects/granjatech/04.webp",
+        "thumb": "assets/projects/granjatech/04-thumb.webp",
+        "width": 1910,
+        "height": 914,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/5367477c-68cc-4763-afe0-1de6eb06d51f/captura-de-tela-2026-03-09-140732.png?id=5577111&token=5367477c-68cc-4763-afe0-1de6eb06d51f&nome=captura-de-tela-2026-03-09-140732&type=.png"
+      },
+      {
+        "src": "assets/projects/granjatech/05.webp",
+        "thumb": "assets/projects/granjatech/05-thumb.webp",
+        "width": 1907,
+        "height": 917,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/4aecf0a9-0c62-4930-991b-b82bedb2e8a4/captura-de-tela-2026-03-09-140944.png?id=5577115&token=4aecf0a9-0c62-4930-991b-b82bedb2e8a4&nome=captura-de-tela-2026-03-09-140944&type=.png"
+      }
+    ],
+    "name": "GranjaTech - Sistema Inteligente para Gestão e Mon",
+    "description": "GranjaTech é uma plataforma de automação e gestão para o setor avícola. Permite controle de produção, monitoramento de sensores em tempo real e gestão de lotes/insumos para otimizar a produtividade.\n\nFuncionalidades: Monitoramento em tempo real, gestão de inventário e Dashboards de métricas.\n\nStack: C# (.NET Core), React.js, PostgreSQL e Docker. Infraestrutura com CI/CD na Azure.",
+    "slug": "granjatech"
+  },
+  {
+    "id": "501054",
+    "images": [
+      {
+        "src": "assets/projects/barberflow/01.webp",
+        "thumb": "assets/projects/barberflow/01-thumb.webp",
+        "width": 1440,
+        "height": 900,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/19d62a5e-a748-4f49-bdca-2294230bae0d/agenda-redesign.jpg?id=5892754&token=19d62a5e-a748-4f49-bdca-2294230bae0d&nome=agenda-redesign&type=.jpg"
+      },
+      {
+        "src": "assets/projects/barberflow/02.webp",
+        "thumb": "assets/projects/barberflow/02-thumb.webp",
+        "width": 1440,
+        "height": 900,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/b76e1c13-f6bb-4484-8701-3a9091d2687e/clientes-redesign.jpg?id=5892755&token=b76e1c13-f6bb-4484-8701-3a9091d2687e&nome=clientes-redesign&type=.jpg"
+      },
+      {
+        "src": "assets/projects/barberflow/03.webp",
+        "thumb": "assets/projects/barberflow/03-thumb.webp",
+        "width": 1440,
+        "height": 900,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/cb245aea-42a4-40ab-83ad-95db4438ae04/dashboard-redesign.jpg?id=5892753&token=cb245aea-42a4-40ab-83ad-95db4438ae04&nome=dashboard-redesign&type=.jpg"
+      },
+      {
+        "src": "assets/projects/barberflow/04.webp",
+        "thumb": "assets/projects/barberflow/04-thumb.webp",
+        "width": 390,
+        "height": 844,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/25b17e2d-d307-4808-9b8e-c59eceef9377/mobile-redesign.jpg?id=5892752&token=25b17e2d-d307-4808-9b8e-c59eceef9377&nome=mobile-redesign&type=.jpg"
+      }
+    ],
+    "name": "BarberFlow",
+    "description": "Desenvolvi o BarberFlow, uma solução completa de gestão e agendamento online focada em aumentar a produtividade e eliminar conflitos de horários em barbearias. O projeto foi construído pensando na experiência do usuário (UX), permitindo que o cliente finalize o agendamento em poucos cliques",
+    "slug": "barberflow"
+  },
+  {
+    "id": "501056",
+    "images": [
+      {
+        "src": "assets/projects/agronutri/01.webp",
+        "thumb": "assets/projects/agronutri/01-thumb.webp",
+        "width": 1914,
+        "height": 919,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/8652d097-d23f-4743-bbd3-4c4a39265da4/captura-de-tela-2026-03-09-142842.png?id=5577181&token=8652d097-d23f-4743-bbd3-4c4a39265da4&nome=captura-de-tela-2026-03-09-142842&type=.png"
+      },
+      {
+        "src": "assets/projects/agronutri/02.webp",
+        "thumb": "assets/projects/agronutri/02-thumb.webp",
+        "width": 1913,
+        "height": 918,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/7dd9db99-3cb1-4877-88e0-40180967beb8/captura-de-tela-2026-03-09-142852.png?id=5577177&token=7dd9db99-3cb1-4877-88e0-40180967beb8&nome=captura-de-tela-2026-03-09-142852&type=.png"
+      },
+      {
+        "src": "assets/projects/agronutri/03.webp",
+        "thumb": "assets/projects/agronutri/03-thumb.webp",
+        "width": 1914,
+        "height": 918,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/b4be08b9-7371-4fd8-8169-4eb1650565ff/captura-de-tela-2026-03-09-142906.png?id=5577180&token=b4be08b9-7371-4fd8-8169-4eb1650565ff&nome=captura-de-tela-2026-03-09-142906&type=.png"
+      },
+      {
+        "src": "assets/projects/agronutri/04.webp",
+        "thumb": "assets/projects/agronutri/04-thumb.webp",
+        "width": 1918,
+        "height": 919,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/7a8474a6-4933-4aa0-b93b-edbd64dcd690/captura-de-tela-2026-03-09-142913.png?id=5577178&token=7a8474a6-4933-4aa0-b93b-edbd64dcd690&nome=captura-de-tela-2026-03-09-142913&type=.png"
+      }
+    ],
+    "name": "AgroNutri - Gestão de Nutrição Animal",
+    "description": "O AgroNutri otimiza a nutrição com cálculos precisos de rações e dietas. Focado em reduzir custos e garantir a saúde do rebanho, o sistema gerencia insumos e formulações usando parâmetros técnicos de zootecnia e projeção de ganho de peso.\n\nFuncionalidades: Cálculo de formulações, controle de estoque e relatórios de custos.",
+    "slug": "agronutri"
+  },
+  {
+    "id": "501061",
+    "images": [
+      {
+        "src": "assets/projects/hotelos/01.webp",
+        "thumb": "assets/projects/hotelos/01-thumb.webp",
+        "width": 1920,
+        "height": 1080,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/2cfbcea0-68e9-4718-8909-e595eda1322d/captura-de-tela-2026-03-09-144031.png?id=5577232&token=2cfbcea0-68e9-4718-8909-e595eda1322d&nome=captura-de-tela-2026-03-09-144031&type=.png"
+      },
+      {
+        "src": "assets/projects/hotelos/02.webp",
+        "thumb": "assets/projects/hotelos/02-thumb.webp",
+        "width": 1920,
+        "height": 1080,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/68d6b06c-cfb7-4abb-b593-3a1e414aec34/captura-de-tela-2026-03-09-144101.png?id=5577234&token=68d6b06c-cfb7-4abb-b593-3a1e414aec34&nome=captura-de-tela-2026-03-09-144101&type=.png"
+      },
+      {
+        "src": "assets/projects/hotelos/03.webp",
+        "thumb": "assets/projects/hotelos/03-thumb.webp",
+        "width": 1920,
+        "height": 1080,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/e9ac6487-01de-40d5-b75e-dfbf46212782/captura-de-tela-2026-03-09-144204.png?id=5577233&token=e9ac6487-01de-40d5-b75e-dfbf46212782&nome=captura-de-tela-2026-03-09-144204&type=.png"
+      },
+      {
+        "src": "assets/projects/hotelos/04.webp",
+        "thumb": "assets/projects/hotelos/04-thumb.webp",
+        "width": 1920,
+        "height": 1080,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/57126615-b636-4f2c-bdf5-1464f061694e/captura-de-tela-2026-03-09-144246.png?id=5577236&token=57126615-b636-4f2c-bdf5-1464f061694e&nome=captura-de-tela-2026-03-09-144246&type=.png"
+      },
+      {
+        "src": "assets/projects/hotelos/05.webp",
+        "thumb": "assets/projects/hotelos/05-thumb.webp",
+        "width": 1920,
+        "height": 1080,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/7ebfc309-adbf-46f8-8499-83c1310d1ac3/captura-de-tela-2026-03-09-144308.png?id=5577235&token=7ebfc309-adbf-46f8-8499-83c1310d1ac3&nome=captura-de-tela-2026-03-09-144308&type=.png"
+      }
+    ],
+    "name": "HotelOS",
+    "description": "HotelOS ? Gestão Hoteleira Inteligente\nO HotelOS é uma plataforma completa de gerenciamento (PMS) projetada para escalar operações hoteleiras. Desenvolvido pela nossa squad, o sistema elimina a necessidade de começar um projeto do zero, oferecendo uma base sólida e testada para reservas, faturamento e gestão operacional.",
+    "slug": "hotelos"
+  },
+  {
+    "id": "501083",
+    "images": [
+      {
+        "src": "assets/projects/controle-imoveis/01.webp",
+        "thumb": "assets/projects/controle-imoveis/01-thumb.webp",
+        "width": 1916,
+        "height": 909,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/7f75cf53-3527-45f4-a29d-6f522dc0f7bd/captura-de-tela-2026-03-09-155734.png?id=5577489&token=7f75cf53-3527-45f4-a29d-6f522dc0f7bd&nome=captura-de-tela-2026-03-09-155734&type=.png"
+      },
+      {
+        "src": "assets/projects/controle-imoveis/02.webp",
+        "thumb": "assets/projects/controle-imoveis/02-thumb.webp",
+        "width": 1918,
+        "height": 916,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/57cf5aa4-16b8-4c4b-b951-c9573c2765d8/captura-de-tela-2026-03-09-155723.png?id=5577488&token=57cf5aa4-16b8-4c4b-b951-c9573c2765d8&nome=captura-de-tela-2026-03-09-155723&type=.png"
+      },
+      {
+        "src": "assets/projects/controle-imoveis/03.webp",
+        "thumb": "assets/projects/controle-imoveis/03-thumb.webp",
+        "width": 1919,
+        "height": 918,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/b0488c8d-e4c1-4358-9901-077447ea1e85/ini1.png?id=5577487&token=b0488c8d-e4c1-4358-9901-077447ea1e85&nome=ini1&type=.png"
+      }
+    ],
+    "name": "Controle-Imoveis",
+    "description": "Controle de imóveis, um sistema web para ter gestão de imóveis para ter controle de faturamento e valores de impostos",
+    "slug": "controle-imoveis"
+  },
+  {
+    "id": "503139",
+    "images": [
+      {
+        "src": "assets/projects/scraping-cnpj/01.webp",
+        "thumb": "assets/projects/scraping-cnpj/01-thumb.webp",
+        "width": 1920,
+        "height": 1017,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/cfd0ee72-b5af-4d00-aecc-3524a642d36b/tela1.png?id=5596007&token=cfd0ee72-b5af-4d00-aecc-3524a642d36b&nome=tela1&type=.png"
+      },
+      {
+        "src": "assets/projects/scraping-cnpj/02.webp",
+        "thumb": "assets/projects/scraping-cnpj/02-thumb.webp",
+        "width": 1920,
+        "height": 1008,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/178ec31e-55e9-4514-a8db-c583172c1449/tela2.png?id=5596009&token=178ec31e-55e9-4514-a8db-c583172c1449&nome=tela2&type=.png"
+      },
+      {
+        "src": "assets/projects/scraping-cnpj/03.webp",
+        "thumb": "assets/projects/scraping-cnpj/03-thumb.webp",
+        "width": 1920,
+        "height": 1012,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/8e69c43d-aabf-456a-9681-4766d9da9488/tela3.png?id=5596010&token=8e69c43d-aabf-456a-9681-4766d9da9488&nome=tela3&type=.png"
+      },
+      {
+        "src": "assets/projects/scraping-cnpj/04.webp",
+        "thumb": "assets/projects/scraping-cnpj/04-thumb.webp",
+        "width": 1920,
+        "height": 1016,
+        "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/99a32ee0-8c7a-4a2a-b4ac-6e8f9c9471d4/tela4.png?id=5596011&token=99a32ee0-8c7a-4a2a-b4ac-6e8f9c9471d4&nome=tela4&type=.png"
+      }
+    ],
+    "name": "Scraping de CNPJ",
+    "description": "Scraping de CNPJ a partir de busca na web via API e registro em banco de dados local com consulta e exportação EXCEL, JSON e CSV",
+    "slug": "scraping-cnpj"
+  },
+  {
+    "slug": "pulsemeet",
+    "name": "PulseMeet",
+    "description": "## PulseMeet — Plataforma de Gestão de Eventos e Comunidades\n\nO **PulseMeet** é uma plataforma SaaS criada para gerenciamento completo de eventos, participantes e comunidades. O sistema centraliza desde a criação de eventos até a venda de ingressos, relacionamento com participantes, análise de resultados e acompanhamento financeiro.\n\nA proposta da plataforma é ajudar empresas, organizadores e comunidades a administrar eventos presenciais e online de forma mais organizada, acompanhando toda a jornada do participante dentro de um único sistema.\n\nEntre as principais funcionalidades estão:\n\n* Criação e gerenciamento de eventos;\n* Calendário completo de eventos;\n* Controle de ingressos e participantes;\n* Gestão de capacidade e lista de espera;\n* CRM de participantes;\n* Organização de comunidades;\n* Check-in de participantes;\n* Segmentação de público;\n* Histórico de interações;\n* Gestão financeira dos eventos;\n* Relatórios de receita e conversão;\n* Indicadores de presença;\n* Análise dos canais de aquisição;\n* Automação de campanhas;\n* Assistente com inteligência artificial;\n* Sugestões inteligentes de ações e campanhas.\n\n### Dashboard\n\nO dashboard apresenta uma visão geral de toda a operação.\n\nNele, o organizador consegue acompanhar indicadores como número total de participantes, quantidade de ingressos vendidos, eventos ativos e membros da comunidade.\n\nA tela também apresenta gráficos de evolução, próximos eventos, tarefas pendentes e sugestões geradas por inteligência artificial para aumentar vendas e engajamento.\n\n### Gestão de Eventos\n\nA área de eventos permite visualizar todos os eventos através de um calendário completo.\n\nCada evento pode possuir informações como data, horário, local, capacidade, modalidade presencial ou online e categoria.\n\nTambém é possível acompanhar o número de participantes confirmados, pessoas na lista de espera e andamento do checklist de preparação do evento.\n\n### CRM de Participantes\n\nO módulo de participantes funciona como um CRM integrado à plataforma.\n\nOs contatos podem ser organizados em etapas como:\n\n**Lead → Em contato → Confirmado → VIP**\n\nCada participante possui um perfil individual com histórico de mensagens, empresa, interesses, informações de check-in e participação em eventos.\n\nO sistema também utiliza inteligência artificial para sugerir ações de relacionamento, como convites para novos eventos, conteúdos personalizados e entrada em comunidades.\n\n### Relatórios e Financeiro\n\nA área de relatórios permite acompanhar o desempenho dos eventos através de indicadores financeiros e operacionais.\n\nEntre as principais métricas disponíveis estão:\n\n* Receita total;\n* Quantidade de ingressos vendidos;\n* Taxa de conversão;\n* Check-ins realizados;\n* Receita por período;\n* Ticket médio;\n* Eventos com melhor desempenho;\n* Canais de aquisição;\n* Taxa de presença;\n* Funil de conversão.\n\nEssas informações ajudam o organizador a entender quais eventos possuem melhor resultado e quais estratégias estão trazendo mais participantes.\n\n### Inteligência Artificial\n\nO PulseMeet possui um assistente integrado capaz de analisar informações da plataforma e gerar recomendações.\n\nA IA pode ajudar com perguntas como:\n\n* Qual evento apresentou maior resultado?\n* Como aumentar a venda de ingressos?\n* Quais participantes possuem maior potencial de conversão?\n* Qual canal está trazendo mais clientes?\n* Que tipo de evento pode ter maior adesão?\n\n### Objetivo do projeto\n\nO PulseMeet foi idealizado como uma solução completa para **organizadores de eventos, empresas, comunidades, conferências e produtores de experiências**.\n\nO projeto demonstra conceitos de **SaaS, CRM, dashboards administrativos, gestão financeira, análise de dados, automação, UX/UI e inteligência artificial aplicada a negócios**.\n",
+    "images": [
+      {
+        "src": "assets/projects/pulsemeet/01.webp",
+        "thumb": "assets/projects/pulsemeet/01-thumb.webp",
+        "width": 1448,
+        "height": 1086,
+        "source": "img.png"
+      },
+      {
+        "src": "assets/projects/pulsemeet/02.webp",
+        "thumb": "assets/projects/pulsemeet/02-thumb.webp",
+        "width": 1448,
+        "height": 1086,
+        "source": "img2.png"
+      },
+      {
+        "src": "assets/projects/pulsemeet/03.webp",
+        "thumb": "assets/projects/pulsemeet/03-thumb.webp",
+        "width": 1448,
+        "height": 1086,
+        "source": "img3.png"
+      }
+    ]
+  },
+  {
+    "slug": "verdevivo",
+    "name": "verdevivo",
+    "description": "# VerdeVivo — Inteligência ambiental urbana\n\nO VerdeVivo é uma plataforma conceitual que ajuda prefeituras e equipes de sustentabilidade a monitorarem a saúde ambiental da cidade.\n\nO sistema reúne indicadores de qualidade do ar, cobertura vegetal, temperatura e emissões de CO₂. Por meio de mapas interativos e alertas automáticos, identifica regiões críticas e auxilia na priorização de ações como plantio de árvores, criação de corredores verdes e combate às ilhas de calor.\n\nPrincipais funcionalidades:\n\n- Mapa ambiental interativo;\n- Monitoramento da qualidade do ar;\n- Identificação de ilhas de calor;\n- Alertas sobre situações críticas;\n- Ranking ambiental dos bairros;\n- Histórico de indicadores e relatórios gerenciais.\n\nO conceito foi desenvolvido como um dashboard SaaS, priorizando clareza, acessibilidade e impacto social.",
+    "images": [
+      {
+        "src": "assets/projects/verdevivo/01.webp",
+        "thumb": "assets/projects/verdevivo/01-thumb.webp",
+        "width": 1672,
+        "height": 941,
+        "source": "Imagem do Codex 15 de set. de 2026, 14_20_20.png"
+      },
+      {
+        "src": "assets/projects/verdevivo/02.webp",
+        "thumb": "assets/projects/verdevivo/02-thumb.webp",
+        "width": 1672,
+        "height": 941,
+        "source": "Imagem do Codex 15 de set. de 2026, 14_24_03.png"
+      }
+    ]
+  }
+]

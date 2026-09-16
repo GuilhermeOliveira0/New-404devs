@@ -1,0 +1,345 @@
+{
+  "pending": "A definir",
+  "head": {
+    "title": "404Devs · Sistemas de gestão sob medida",
+    "description": "Quatro desenvolvedores. Sistemas de gestão, sites e aplicativos para empresas que precisam sair da planilha e do caderno. CNPJ ativo, com nota fiscal.",
+    "ogImageAlt": "404Devs — Tiramos a sua operação da planilha e do caderno"
+  },
+  "structured": {
+    "description": "Sistemas de gestão, sites e aplicativos sob medida para pequenas e médias empresas.",
+    "areaServed": "Brasil",
+    "knowsAbout": "[\"Desenvolvimento de sistemas de gestão\", \"Desenvolvimento web\", \"Integração de sistemas\", \"Automação de processos\"]"
+  },
+  "a11y": {
+    "skip": "Pular para o conteúdo"
+  },
+  "bar": {
+    "brandLabel": "404Devs, ir para o topo"
+  },
+  "nav": {
+    "mainLabel": "Principal",
+    "panelLabel": "Principal, telas estreitas",
+    "menu": "Menu",
+    "projects": "Projetos",
+    "services": "Serviços",
+    "process": "Processo",
+    "team": "Time",
+    "faq": "FAQ"
+  },
+  "tools": {
+    "langSwitchShort": "EN",
+    "langSwitchLabel": "Read this site in English",
+    "theme": "Tema",
+    "themeToDark": "Ativar tema escuro",
+    "themeToLight": "Ativar tema claro"
+  },
+  "cta": {
+    "whatsapp": "Falar no WhatsApp"
+  },
+  "hero": {
+    "title": "Tiramos a sua operação\n          <span class=\"hero__shift\">da <span class=\"strike\" data-signature>planilha</span> e do <span class=\"strike\" data-signature>caderno</span>.</span>",
+    "meta": {
+      "cityLabel": "São Paulo",
+      "teamLabel": "Equipe",
+      "team": "4 devs",
+      "legalLabel": "Formalização",
+      "legal": "CNPJ · NF",
+      "verifyLabel": "Verificação"
+    },
+    "lede": "Somos quatro desenvolvedores. Construímos sistemas de gestão, sites e aplicativos para empresas que precisam organizar o que hoje está no papel, no WhatsApp e no Excel. Sete sistemas entregues em 2026.",
+    "actionProjects": "Ver o que já entregamos ↓",
+    "actionWhatsapp": "Falar no WhatsApp →"
+  },
+  "projects": {
+    "index": "§ 01 · Índice",
+    "title": "Sete sistemas rodando, em sete setores diferentes.",
+    "lede": "Cada linha começou com alguém controlando a operação no papel. Abra uma para ver o antes, o que construímos e o resultado.",
+    "labels": {
+      "before": "Antes",
+      "built": "O que construímos",
+      "result": "Resultado",
+      "viewSystem": "Ver o sistema ↗"
+    },
+    "items": {
+      "granjatech": {
+        "sector": "Avicultura",
+        "coverSector": "AVICULTURA",
+        "what": "Automação: produção, sensores em tempo real, lotes e insumos",
+        "before": "Controle de lote, insumo e produção em caderno e planilha, sem leitura de sensor em tempo real.",
+        "built": "Plataforma de automação com controle de produção, monitoramento de sensores em tempo real e gestão de lotes e insumos.",
+        "resultNote": "Precisa de um número real do projeto — lotes controlados, horas economizadas ou perda evitada.",
+        "coverAlt": "Capa tipográfica de GranjaTech"
+      },
+      "barberflow": {
+        "sector": "Barbearia",
+        "coverSector": "BARBEARIA",
+        "what": "Gestão completa e agendamento online",
+        "before": "Agenda de papel e horário marcado por WhatsApp.",
+        "built": "Gestão completa e agendamento online, sem conflito de horário.",
+        "coverAlt": "Capa tipográfica de BarberFlow"
+      },
+      "agronutri": {
+        "sector": "Nutrição animal",
+        "coverSector": "NUTRIÇÃO ANIMAL",
+        "what": "Cálculo de ração e formulação de dieta",
+        "before": "Planilha para calcular ração, refeita a cada lote.",
+        "built": "Cálculo preciso de ração e formulação de dieta, para reduzir custo e cuidar da saúde do rebanho.",
+        "coverAlt": "Capa tipográfica de AgroNutri"
+      },
+      "hotelos": {
+        "sector": "Hotelaria",
+        "coverSector": "HOTELARIA",
+        "what": "PMS: reservas, faturamento e operação",
+        "before": "Caderno de reservas e faturamento à parte.",
+        "built": "PMS completo: reservas, faturamento e gestão operacional no mesmo lugar.",
+        "coverAlt": "Capa tipográfica de HotelOS"
+      },
+      "controleImoveis": {
+        "sector": "Imobiliário",
+        "coverSector": "IMOBILIÁRIO",
+        "what": "Cobrança e valores de imposto por imóvel",
+        "before": "Planilha de cobrança e imposto por imóvel.",
+        "built": "Sistema web para controle de cobrança e valores de imposto.",
+        "coverAlt": "Capa tipográfica de Controle-Imóveis"
+      },
+      "vendasEstoque": {
+        "name": "Vendas e estoque",
+        "sector": "Indústria de alimentos",
+        "coverSector": "INDÚSTRIA DE ALIMENTOS",
+        "what": "Vendas e controle de estoque para fábrica de polpas",
+        "before": "Estoque e pedidos anotados em planilha.",
+        "built": "Sistema de vendas e controle de estoque para fábrica de polpas.",
+        "coverAlt": "Capa tipográfica de Vendas e estoque"
+      },
+      "scrapingCnpj": {
+        "name": "Scraping de CNPJ",
+        "sector": "Dados · B2B",
+        "coverSector": "DADOS · B2B",
+        "what": "Coleta via API, banco e exportação Excel, JSON e CSV",
+        "before": "Consulta manual, empresa por empresa.",
+        "built": "Coleta via API com registro em banco e exportação em Excel, JSON e CSV.",
+        "coverAlt": "Capa tipográfica de Scraping de CNPJ"
+      }
+    }
+  },
+  "quotes": {
+    "index": "§ 02 · Avaliações",
+    "title": "O que os clientes escreveram, palavra por palavra.",
+    "carouselLabel": "Depoimentos de clientes",
+    "roleDescription": "carrossel manual",
+    "countFormat": "{n} / {total}",
+    "prev": "Depoimento anterior",
+    "next": "Próximo depoimento",
+    "goTo": "Ir para o depoimento {n}",
+    "asideText": "Reproduzidas na íntegra, sem edição.",
+    "asideLink": "Ver todas as avaliações no 99Freelas ↗",
+    "sectors": "Avicultura · Barbearia · Nutrição animal · Hotelaria · Odontologia · Imobiliário · Indústria de alimentos · Educação",
+    "items": [
+      {
+        "text": "“Pessoal da 404Devs, parabéns pelo sistema! Ficou perfeito. O ponto alto para mim foi ter tido essa visão de bastidores durante as etapas; isso faz toda a diferença para quem está do lado do cliente. Acompanhar a construção de perto me deu total confiança no que estava sendo entregue. Obrigado pela parceria e pelo trabalho nota 10!”",
+        "translation": "",
+        "meta": "Dashboard de planejamento de estudos e metas · mar 2026 · ★ 5,0"
+      },
+      {
+        "text": "“Fiquei muito satisfeito com a landing page produzida. O visual é limpo e as informações estão bem organizadas, o que ajuda muito na hora de convencer meus clientes a fecharem negócios. O site abre rápido no celular e no computador, o que era uma prioridade para mim. Um investimento que valeu muito a pena! Parabéns a toda equipe do 404Devs.”",
+        "translation": "",
+        "meta": "Landing page profissional para pequenos negócios · mar 2026 · ★ 5,0"
+      },
+      {
+        "text": "“Equipe extremamente atenciosa, responsável e dedicada. Cumprem rigorosamente os prazos e mantêm um fluxo de trabalho excelente, enviando amostras constantes do projeto”",
+        "translation": "",
+        "meta": "Sistema de vendas e estoque para fábrica de polpas · mar 2026 · ★ 5,0 · <a href=\"#p02\">→ índice 02</a>"
+      },
+      {
+        "text": "“O trabalho foi bem feito, profissionais com experiência”",
+        "translation": "",
+        "meta": "Adequação de projeto de web scraping para Jucesp · mar 2026 · ★ 5,0 · <a href=\"#p01\">→ índice 01</a>"
+      },
+      {
+        "text": "“O trabalho foi realizado com boa qualidade, recomendo!”",
+        "translation": "",
+        "meta": "Scraping de empresas na Jucesp a partir de lista de CNPJs · mar 2026 · ★ 5,0 · <a href=\"#p01\">→ índice 01</a>"
+      }
+    ]
+  },
+  "services": {
+    "index": "§ 03 · Serviços",
+    "title": "O que a gente resolve.",
+    "stack": "Trabalhamos com C# / .NET · Node.js · TypeScript · React · React Native · PostgreSQL · MySQL · MongoDB · Supabase · Docker · Azure",
+    "items": [
+      {
+        "title": "Sistema de gestão sob medida",
+        "text": "Para quem controla a operação em planilha, caderno ou WhatsApp e já passou do ponto. Agenda, estoque, clientes, faturamento e relatório no mesmo lugar."
+      },
+      {
+        "title": "Site e landing page que vende",
+        "text": "Página rápida, clara e feita para o cliente fechar negócio — não para ganhar prêmio de design."
+      },
+      {
+        "title": "Integração e automação",
+        "text": "Conectar sistemas que não conversam e automatizar o trabalho manual que hoje alguém faz repetidamente na mão."
+      },
+      {
+        "title": "Manutenção e evolução",
+        "text": "Suporte contínuo depois da entrega, com quem construiu o sistema — não com um atendente que nunca viu o seu código."
+      }
+    ]
+  },
+  "process": {
+    "index": "§ 04 · Processo",
+    "title": "Você acompanha a construção do começo ao fim.",
+    "lede": "“O ponto alto para mim foi ter tido essa visão de bastidores durante as etapas.” — cliente, março de 2026",
+    "labels": {
+      "youGet": "Você recebe",
+      "deadline": "Prazo",
+      "ongoing": "Contínuo"
+    },
+    "steps": [
+      {
+        "title": "Levantamento e alinhamento",
+        "text": "Mapeamos objetivos, regras de negócio e expectativas para definir o escopo com comunicação direta.",
+        "deliverable": "Documento de escopo com funcionalidades, prazo e valor fechado"
+      },
+      {
+        "title": "Arquitetura e desenvolvimento",
+        "text": "Construímos front-end, back-end e banco com a stack adequada ao projeto, priorizando desempenho e manutenção.",
+        "deliverable": "Amostras do projeto em andamento, para acompanhar de perto"
+      },
+      {
+        "title": "Validação e publicação",
+        "text": "Testamos os fluxos críticos, ajustamos consultas e publicamos com estabilidade e segurança.",
+        "deliverable": "Sistema no ar e treinamento de uso para a sua equipe"
+      },
+      {
+        "title": "Acompanhamento e suporte",
+        "text": "Seguimos com suporte técnico, melhorias evolutivas e monitoramento para manter o sistema eficiente no dia a dia.",
+        "deliverable": "Canal direto para correção e evolução"
+      }
+    ]
+  },
+  "terms": {
+    "index": "§ 05 · Condições",
+    "title": "Tudo por escrito, antes de começar.",
+    "lede": "Você sabe exatamente o que vai receber, quando, por quanto — e o que acontece se algo der errado depois.",
+    "items": {
+      "contract": {
+        "term": "Contrato",
+        "head": "Escopo e prazo por escrito",
+        "text": "Funcionalidades, prazo de entrega e valor definidos em contrato antes da primeira linha de código."
+      },
+      "invoice": {
+        "term": "Nota fiscal",
+        "head": "CNPJ ativo",
+        "text": "Emitimos nota fiscal em todo projeto, e sua empresa lança a despesa normalmente na contabilidade."
+      },
+      "warranty": {
+        "term": "Garantia",
+        "head": "Correção sem custo",
+        "textBefore": "Defeito encontrado depois da entrega é corrigido sem cobrança por",
+        "textAfter": "dias."
+      },
+      "training": {
+        "term": "Treinamento",
+        "head": "Sua equipe sabe usar",
+        "text": "Ensinamos quem vai operar o sistema no dia a dia. Entrega não é só colocar no ar."
+      }
+    }
+  },
+  "team": {
+    "index": "§ 06 · Quem faz",
+    "title": "Quatro pessoas, com nome e sobrenome.",
+    "lede": "Você fala direto com quem escreve o código. Sem intermediário e sem gerente de conta repassando recado.",
+    "members": [
+      {
+        "role": "Front-end e interfaces",
+        "linkedinLabel": "LinkedIn de Samuel Henrique",
+        "githubLabel": "GitHub de Samuel Henrique"
+      },
+      {
+        "role": "Full stack e QA",
+        "linkedinLabel": "LinkedIn de Guilherme Henrique de Oliveira",
+        "githubLabel": "GitHub de Guilherme Henrique de Oliveira"
+      },
+      {
+        "role": "Back-end e arquitetura",
+        "linkedinLabel": "LinkedIn de Adryan Francisco",
+        "githubLabel": "GitHub de Adryan Francisco"
+      },
+      {
+        "role": "Back-end e cibersegurança",
+        "linkedinLabel": "LinkedIn de Wendell Nascimento",
+        "githubLabel": "GitHub de Wendell Nascimento"
+      }
+    ]
+  },
+  "faq": {
+    "index": "§ 07 · Perguntas",
+    "title": "O que todo mundo pergunta antes de fechar.",
+    "items": [
+      {
+        "q": "Quanto custa um projeto?",
+        "a": "O valor depende do escopo. Assim que a faixa por categoria estiver definida, ela aparece aqui — até lá, fale com a gente para receber uma estimativa."
+      },
+      {
+        "q": "Quanto tempo leva?",
+        "a": "O prazo típico por tipo de projeto será publicado aqui."
+      },
+      {
+        "q": "Vocês emitem nota fiscal?",
+        "a": "Sim. Temos CNPJ ativo e emitimos nota fiscal em todo projeto."
+      },
+      {
+        "q": "Trabalham com contrato?",
+        "a": "Sim. Escopo, prazo e valor ficam definidos por escrito antes do início do desenvolvimento."
+      },
+      {
+        "q": "E depois da entrega? Tem suporte?",
+        "aBefore": "Sim. Defeito encontrado depois da entrega é corrigido sem cobrança por",
+        "aAfter": "dias, e seguimos disponíveis para melhorias evolutivas."
+      },
+      {
+        "q": "Atendem fora da região?",
+        "a": "Sim, atendemos remoto para todo o Brasil. Todos os projetos do nosso portfólio foram entregues assim."
+      },
+      {
+        "q": "De quem fica o código do sistema?",
+        "a": "A política de titularidade do código entregue será publicada aqui."
+      },
+      {
+        "q": "Como funciona o pagamento?",
+        "a": "Entrada, parcelas e marcos de entrega serão detalhados aqui."
+      }
+    ]
+  },
+  "contact": {
+    "index": "§ 08 · Contato",
+    "title": "Conta pra gente o que trava o seu dia.",
+    "lede": "Primeira conversa é gratuita e sem compromisso. Respondemos em até 24 horas úteis.",
+    "emailLabel": "E-mail",
+    "hoursLabel": "Atendimento",
+    "hours": "Segunda a sexta, das 9h às 18h · Remoto, todo o Brasil"
+  },
+  "form": {
+    "name": "Nome",
+    "contact": "E-mail ou WhatsApp",
+    "segment": "Qual o seu segmento?",
+    "segmentPlaceholder": "Barbearia, clínica, granja, hotel...",
+    "message": "O que você precisa resolver?",
+    "messagePlaceholder": "Hoje eu controlo isso numa planilha e...",
+    "honeypot": "Não preencha este campo",
+    "submit": "Enviar mensagem",
+    "msgName": "Informe o seu nome para que a gente saiba com quem falar.",
+    "msgContact": "Informe um e-mail ou WhatsApp para podermos responder.",
+    "msgInvalid": "Esse contato não parece válido. Use um e-mail ou um número com DDD.",
+    "msgSending": "Enviando...",
+    "msgSuccess": "Mensagem enviada. Respondemos em até 24 horas úteis.",
+    "msgFailure": "Não conseguimos enviar agora. Fale com a gente no WhatsApp:"
+  },
+  "footer": {
+    "tagline": "Sistemas de gestão, sites e aplicativos sob medida para pequenas e médias empresas.",
+    "contactHead": "Contato",
+    "verifyHead": "Verificação",
+    "hours": "Segunda a sexta, 9h às 18h · Atendimento remoto, todo o Brasil",
+    "backToTop": "Voltar ao topo ↑"
+  }
+}
