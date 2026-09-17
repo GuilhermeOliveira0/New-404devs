@@ -232,21 +232,28 @@
         "thumb": "assets/projects/pulsemeet/01-thumb.webp",
         "width": 1448,
         "height": 1086,
-        "source": "img.png"
+        "source": "codex-clipboard-6179aa6a-486e-45ba-8aa2-98df6087ce5b.jpg"
       },
       {
         "src": "assets/projects/pulsemeet/02.webp",
         "thumb": "assets/projects/pulsemeet/02-thumb.webp",
         "width": 1448,
         "height": 1086,
-        "source": "img2.png"
+        "source": "codex-clipboard-b55539a7-f0fe-4e1d-9fff-90a7df197963.jpg"
       },
       {
         "src": "assets/projects/pulsemeet/03.webp",
         "thumb": "assets/projects/pulsemeet/03-thumb.webp",
         "width": 1448,
         "height": 1086,
-        "source": "img3.png"
+        "source": "codex-clipboard-5c3ad4ac-096a-4d00-8910-8fcd3e908240.jpg"
+      },
+      {
+        "src": "assets/projects/pulsemeet/04.webp",
+        "thumb": "assets/projects/pulsemeet/04-thumb.webp",
+        "width": 1448,
+        "height": 1086,
+        "source": "codex-clipboard-6006dc70-3b8f-477f-ae22-b2975d5eaffb.jpg"
       }
     ]
   },
