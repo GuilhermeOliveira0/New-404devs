@@ -9,7 +9,7 @@ test('production output contains only public assets and complete project galleri
   assert.deepEqual(fs.readdirSync('dist').sort(), ['assets','index.html','robots.txt','script.js','sitemap.xml','style.css']);
   const html = fs.readFileSync('dist/index.html', 'utf8');
   const gallery = JSON.parse(html.match(/id="gallery-data">([\s\S]*?)<\/script>/)[1]);
-  assert.equal(gallery.length, 9);
+  assert.equal(gallery.length, 10);
   for (const project of gallery) for (const img of project.images) {
     assert.ok(fs.existsSync(path.join('dist',img.src)), img.src);
     assert.ok(fs.existsSync(path.join('dist',img.src.replace('.webp','-thumb.webp'))));

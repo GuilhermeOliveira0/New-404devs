@@ -20,7 +20,7 @@ Depois, acesse `http://127.0.0.1:4040/`.
 - `portfolio-sources.json`: inventário das imagens e fontes dos projetos.
 - `style.css`: layout responsivo, tipografia e animações.
 - `script.js`: navegação, filtros, galerias e paginação.
-- `assets/projects/`: 36 imagens dos nove projetos, além das miniaturas.
+- `assets/projects/`: 39 imagens dos dez projetos, além das miniaturas.
 - `dist/`: arquivos públicos gerados pelo build e publicados na Vercel.
 - `content/pt-BR.json`: conteúdo institucional e avaliações.
 

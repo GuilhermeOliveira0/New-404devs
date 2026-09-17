@@ -3,6 +3,7 @@
 .env.*
 !.env.example
 dist/
+.tmp-edge-*/
 node_modules/
 *.log
 *.err

@@ -313,5 +313,33 @@
         "height": 1086
       }
     ]
+  },
+  {
+    "name": "Gênesis Solar",
+    "slug": "genesissolar",
+    "description": "Landing page institucional e comercial criada para apresentar os serviços da Gênesis Solar e transformar visitas em pedidos de orçamento. A página combina uma proposta de valor direta, provas de experiência e chamadas para falar com a equipe.\n\nO fluxo conduz o visitante da explicação dos benefícios e soluções fotovoltaicas até uma simulação inicial. O formulário reúne os dados necessários para preparar uma proposta personalizada e continuar o atendimento pelo WhatsApp.\n\nO conteúdo também destaca instalações realizadas, etapas do serviço, depoimentos, localização e contato, com comunicação direcionada a Jales, São José do Rio Preto e região.",
+    "images": [
+      {
+        "src": "assets/projects/genesissolar/01.webp",
+        "thumb": "assets/projects/genesissolar/01-thumb.webp",
+        "width": 1368,
+        "height": 768,
+        "source": "https://genesissolarbr.com.br/#hero"
+      },
+      {
+        "src": "assets/projects/genesissolar/02.webp",
+        "thumb": "assets/projects/genesissolar/02-thumb.webp",
+        "width": 1368,
+        "height": 768,
+        "source": "https://genesissolarbr.com.br/#simulacao"
+      },
+      {
+        "src": "assets/projects/genesissolar/03.webp",
+        "thumb": "assets/projects/genesissolar/03-thumb.webp",
+        "width": 1368,
+        "height": 768,
+        "source": "https://genesissolarbr.com.br/#projetos"
+      }
+    ]
   }
 ]
