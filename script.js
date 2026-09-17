@@ -67,6 +67,7 @@ function renderGallery(index, position) {
   const dialog = document.querySelector(`#case-${index}`);
   const main = dialog.querySelector('[data-main-image]');
   main.src=image.src;
+  main.width=image.width; main.height=image.height;
   main.alt=`${project.name} — ${image.caption}`;
   dialog.querySelector('.gallery-caption').textContent=image.caption;
   dialog.querySelector('.gallery-counter').textContent=`${current+1} / ${project.images.length}`;
@@ -76,7 +77,9 @@ function renderGallery(index, position) {
 function openCase(index) {
   activeCase=index;
   renderGallery(index,positions.get(index)??galleries[index].cover);
-  document.querySelector(`#case-${index}`).showModal();
+  const dialog = document.querySelector(`#case-${index}`);
+  dialog.showModal();
+  dialog.scrollTop = 0;
 }
 function stepImage(step) { renderGallery(activeCase,(positions.get(activeCase)||0)+step); }
 function renderViewer() {
@@ -194,18 +197,21 @@ contactForm.addEventListener('submit', async event => {
   contactForm.setAttribute('aria-busy', 'true');
   contactStatus.textContent = 'Enviando sua mensagem…'; contactStatus.dataset.state = 'pending';
   updateEmailFallback();
+  const submitted = contactPayload();
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 15000);
   try {
     const response = await fetch(contactForm.action, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(contactPayload()), signal: controller.signal
+      body: JSON.stringify(submitted), signal: controller.signal
     });
     const result = await response.json().catch(() => ({}));
     if (!response.ok || result.ok !== true) throw new Error(result.erro || 'O envio pelo site está indisponível. Use o WhatsApp ou o link de e-mail abaixo.');
     contactStatus.textContent = 'Mensagem enviada! Nossa equipe vai responder pelo e-mail informado.';
     contactStatus.dataset.state = 'success';
-    contactForm.reset(); updateEmailFallback();
+    // Keep anything the visitor typed while the request was in flight.
+    if (JSON.stringify(contactPayload()) === JSON.stringify(submitted)) contactForm.reset();
+    updateEmailFallback();
   } catch (error) {
     contactStatus.textContent = error.name === 'AbortError' || error instanceof TypeError
       ? 'Não conseguimos confirmar o envio. Seu texto foi mantido. Tente novamente ou use o WhatsApp ou o link de e-mail.'
