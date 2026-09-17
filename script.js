@@ -4,15 +4,11 @@ let scheduled = false;
 const projectSections = [...document.querySelectorAll('.project-section')];
 const movingElements = [...document.querySelectorAll('.magnetic')];
 const allowed = () => !reduced.matches;
-const heroVideo = document.querySelector('.hero-notebook-video');
-function syncHeroVideo() {
-  if (!heroVideo) return;
-  if (reduced.matches || document.hidden) { heroVideo.pause(); return; }
-  if (!heroVideo.ended) heroVideo.play().catch(() => {});
+const notebookImage = document.querySelector('.photo-notebook-base');
+if (notebookImage) {
+  // Start the hinge animation only once the supplied photograph is decoded.
+  notebookImage.decode().then(() => notebookImage.parentElement.classList.add('notebook-ready')).catch(() => {});
 }
-reduced.addEventListener('change', syncHeroVideo);
-document.addEventListener('visibilitychange', syncHeroVideo);
-syncHeroVideo();
 function renderScroll() {
   scheduled = false;
   const max = root.scrollHeight - innerHeight;
