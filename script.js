@@ -188,8 +188,8 @@ function updateEmailFallback() {
   const data = contactPayload();
   emailFallback.href = `mailto:404devsoficial@gmail.com?subject=${encodeURIComponent('Contato pelo site — '+(data.nome || 'Novo projeto'))}&body=${encodeURIComponent(`Nome: ${data.nome}\nE-mail: ${data.email}\n\n${data.mensagem}`)}`;
 }
-contactForm.addEventListener('input', updateEmailFallback);
-contactForm.addEventListener('submit', async event => {
+if (contactForm) contactForm.addEventListener('input', updateEmailFallback);
+if (contactForm) contactForm.addEventListener('submit', async event => {
   event.preventDefault();
   if (sendingContact || !contactForm.reportValidity()) return;
   const button = contactForm.querySelector('[type="submit"]');
