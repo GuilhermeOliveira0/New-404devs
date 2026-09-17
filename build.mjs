@@ -36,7 +36,7 @@ fs.cpSync(path.join(projectRoot, 'assets'), path.join(output, 'assets'), {
   filter: source => {
     const stat = fs.lstatSync(source);
     if (stat.isSymbolicLink()) throw new Error('Public assets cannot be symbolic links');
-    return !path.basename(source).startsWith('.') && (stat.isDirectory() || /\.(webp|png|jpg|jpeg|svg|ico|woff2?)$/i.test(source));
+    return !path.basename(source).startsWith('.') && (stat.isDirectory() || /\.(webp|png|jpg|jpeg|svg|ico|woff2?|mp4)$/i.test(source));
   }
 });
 console.log(`Protótipo gerado com ${projects.length} projetos e ${projects.reduce((total,p)=>total+p.images.length,0)} imagens.`);

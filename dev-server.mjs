@@ -14,7 +14,7 @@ if (fs.existsSync(envFile)) {
     if (match && process.env[match[1]] === undefined) process.env[match[1]] = match[2].trim().replace(/^(['"])(.*)\1$/, '$2');
   }
 }
-const types = { '.html':'text/html; charset=utf-8', '.css':'text/css; charset=utf-8', '.js':'application/javascript', '.svg':'image/svg+xml', '.webp':'image/webp', '.png':'image/png', '.woff2':'font/woff2', '.xml':'application/xml', '.txt':'text/plain' };
+const types = { '.mp4':'video/mp4', '.html':'text/html; charset=utf-8', '.css':'text/css; charset=utf-8', '.js':'application/javascript', '.svg':'image/svg+xml', '.webp':'image/webp', '.png':'image/png', '.woff2':'font/woff2', '.xml':'application/xml', '.txt':'text/plain' };
 const server = http.createServer(async (req, res) => {
   for (const { key, value } of securityHeaders) res.setHeader(key, value);
   res.status = code => { res.statusCode = code; return res; };
