@@ -270,5 +270,48 @@
         "source": "Imagem do Codex 15 de set. de 2026, 14_24_03.png"
       }
     ]
+  },
+  {
+    "name": "PolpaGest",
+    "slug": "polpagest",
+    "description": "Sistema de vendas e controle de estoque para fábricas e distribuidoras de polpas de frutas. Integra produtos, lotes e validade, frente de caixa, pagamentos e acompanhamento financeiro.\n\nO controle de estoque prioriza os lotes que vencem primeiro (FEFO), com alertas de validade e rastreabilidade para reduzir perdas. O fluxo de venda reúne carrinho, descontos, pagamento e comprovante, com baixa de estoque vinculada à confirmação.\n\nAs telas apresentam dados de demonstração e um pagamento Pix simulado.",
+    "images": [
+      {
+        "src": "assets/projects/polpagest/01.webp",
+        "thumb": "assets/projects/polpagest/01-thumb.webp",
+        "width": 1448,
+        "height": 1086
+      },
+      {
+        "src": "assets/projects/polpagest/02.webp",
+        "thumb": "assets/projects/polpagest/02-thumb.webp",
+        "width": 1448,
+        "height": 1086
+      },
+      {
+        "src": "assets/projects/polpagest/03.webp",
+        "thumb": "assets/projects/polpagest/03-thumb.webp",
+        "width": 1448,
+        "height": 1086
+      },
+      {
+        "src": "assets/projects/polpagest/04.webp",
+        "thumb": "assets/projects/polpagest/04-thumb.webp",
+        "width": 1448,
+        "height": 1086
+      },
+      {
+        "src": "assets/projects/polpagest/05.webp",
+        "thumb": "assets/projects/polpagest/05-thumb.webp",
+        "width": 1448,
+        "height": 1086
+      },
+      {
+        "src": "assets/projects/polpagest/06.webp",
+        "thumb": "assets/projects/polpagest/06-thumb.webp",
+        "width": 1448,
+        "height": 1086
+      }
+    ]
   }
 ]
