@@ -162,17 +162,17 @@ document.querySelectorAll('[data-deck]').forEach(deck=>{
     current=(index+panels.length)%panels.length;
     panels.forEach((panel,i)=>{panel.hidden=i!==current;});
     buttons.forEach((button,i)=>button.setAttribute('aria-current',String(i===current)));
-    if(announce)deck.querySelector('[data-status]').textContent=`${deck.dataset.deck}: página ${current+1} de ${panels.length}`;
+    if(announce)deck.querySelector('[data-status]').textContent=buttons.length ? `${deck.dataset.deck}: página ${current+1} de ${panels.length}` : panels[current].querySelector('.review-bottom').textContent.trim();
     requestRender();
   };
   buttons.forEach((button,i)=>button.addEventListener('click',()=>show(i)));
   deck.querySelector('[data-prev]').addEventListener('click',()=>show(current-1));
   deck.querySelector('[data-next]').addEventListener('click',()=>show(current+1));
-  deck.querySelector('.deck-pages').addEventListener('keydown',event=>{
+  deck.querySelector('.deck-controls').addEventListener('keydown',event=>{
     if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
     event.preventDefault();
     show(event.key==='Home'?0:event.key==='End'?panels.length-1:current+(event.key==='ArrowRight'?1:-1));
-    buttons[current].focus();
+    buttons[current]?.focus();
   });
   deck.classList.add('deck-ready');show(0,false);
 });
