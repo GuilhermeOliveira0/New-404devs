@@ -22,6 +22,7 @@ Depois, acesse `http://127.0.0.1:4040/`.
 - `style.css`: layout responsivo, tipografia e animações.
 - `script.js`: navegação, filtros, galerias e paginação.
 - `assets/hero/notebook-home.mp4`: animação do notebook usada na abertura da home.
+- `assets/brand/`: logo horizontal em versão para fundo claro e para fundo escuro.
 - `assets/projects/`: 40 imagens dos dez projetos, além das miniaturas.
 - `dist/`: arquivos públicos gerados pelo build e publicados na Vercel.
 - `content/pt-BR.json`: conteúdo institucional e avaliações.

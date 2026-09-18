@@ -22,6 +22,6 @@ test('local server blocks Windows traversal and private files and applies securi
   assert.equal(page.headers.get('x-content-type-options'),'nosniff');
   assert.equal(page.headers.get('x-frame-options'),'DENY');
   assert.match(page.headers.get('content-security-policy'),/script-src 'self';/);
-  assert.equal((await fetch(base+'/assets/favicon.svg')).status,200);
+  assert.equal((await fetch(base+'/assets/favicon-32.png')).status,200);
   assert.equal((await fetch(base+'/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:'x'.repeat(32769)})).status,413);
 });
