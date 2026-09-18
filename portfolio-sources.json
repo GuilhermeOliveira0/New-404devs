@@ -84,29 +84,29 @@
       {
         "src": "assets/projects/agronutri/01.webp",
         "thumb": "assets/projects/agronutri/01-thumb.webp",
-        "width": 1914,
-        "height": 919,
+        "width": 1672,
+        "height": 941,
         "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/8652d097-d23f-4743-bbd3-4c4a39265da4/captura-de-tela-2026-03-09-142842.png?id=5577181&token=8652d097-d23f-4743-bbd3-4c4a39265da4&nome=captura-de-tela-2026-03-09-142842&type=.png"
       },
       {
         "src": "assets/projects/agronutri/02.webp",
         "thumb": "assets/projects/agronutri/02-thumb.webp",
-        "width": 1913,
-        "height": 918,
+        "width": 1672,
+        "height": 941,
         "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/7dd9db99-3cb1-4877-88e0-40180967beb8/captura-de-tela-2026-03-09-142852.png?id=5577177&token=7dd9db99-3cb1-4877-88e0-40180967beb8&nome=captura-de-tela-2026-03-09-142852&type=.png"
       },
       {
         "src": "assets/projects/agronutri/03.webp",
         "thumb": "assets/projects/agronutri/03-thumb.webp",
-        "width": 1914,
-        "height": 918,
+        "width": 1672,
+        "height": 941,
         "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/b4be08b9-7371-4fd8-8169-4eb1650565ff/captura-de-tela-2026-03-09-142906.png?id=5577180&token=b4be08b9-7371-4fd8-8169-4eb1650565ff&nome=captura-de-tela-2026-03-09-142906&type=.png"
       },
       {
         "src": "assets/projects/agronutri/04.webp",
         "thumb": "assets/projects/agronutri/04-thumb.webp",
-        "width": 1918,
-        "height": 919,
+        "width": 1672,
+        "height": 941,
         "source": "https://duqxk0v9olda1.cloudfront.net/portfolios/imagens/original/4034804/7a8474a6-4933-4aa0-b93b-edbd64dcd690/captura-de-tela-2026-03-09-142913.png?id=5577178&token=7a8474a6-4933-4aa0-b93b-edbd64dcd690&nome=captura-de-tela-2026-03-09-142913&type=.png"
       }
     ],
@@ -232,21 +232,28 @@
         "thumb": "assets/projects/pulsemeet/01-thumb.webp",
         "width": 1448,
         "height": 1086,
-        "source": "img.png"
+        "source": "codex-clipboard-6179aa6a-486e-45ba-8aa2-98df6087ce5b.jpg"
       },
       {
         "src": "assets/projects/pulsemeet/02.webp",
         "thumb": "assets/projects/pulsemeet/02-thumb.webp",
         "width": 1448,
         "height": 1086,
-        "source": "img2.png"
+        "source": "codex-clipboard-b55539a7-f0fe-4e1d-9fff-90a7df197963.jpg"
       },
       {
         "src": "assets/projects/pulsemeet/03.webp",
         "thumb": "assets/projects/pulsemeet/03-thumb.webp",
         "width": 1448,
         "height": 1086,
-        "source": "img3.png"
+        "source": "codex-clipboard-5c3ad4ac-096a-4d00-8910-8fcd3e908240.jpg"
+      },
+      {
+        "src": "assets/projects/pulsemeet/04.webp",
+        "thumb": "assets/projects/pulsemeet/04-thumb.webp",
+        "width": 1448,
+        "height": 1086,
+        "source": "codex-clipboard-6006dc70-3b8f-477f-ae22-b2975d5eaffb.jpg"
       }
     ]
   },
@@ -268,6 +275,77 @@
         "width": 1672,
         "height": 941,
         "source": "Imagem do Codex 15 de set. de 2026, 14_24_03.png"
+      }
+    ]
+  },
+  {
+    "name": "PolpaGest",
+    "slug": "polpagest",
+    "description": "Sistema de vendas e controle de estoque para fábricas e distribuidoras de polpas de frutas. Integra produtos, lotes e validade, frente de caixa, pagamentos e acompanhamento financeiro.\n\nO controle de estoque prioriza os lotes que vencem primeiro (FEFO), com alertas de validade e rastreabilidade para reduzir perdas. O fluxo de venda reúne carrinho, descontos, pagamento e comprovante, com baixa de estoque vinculada à confirmação.\n\nAs telas apresentam dados de demonstração e um pagamento Pix simulado.",
+    "images": [
+      {
+        "src": "assets/projects/polpagest/01.webp",
+        "thumb": "assets/projects/polpagest/01-thumb.webp",
+        "width": 1448,
+        "height": 1086
+      },
+      {
+        "src": "assets/projects/polpagest/02.webp",
+        "thumb": "assets/projects/polpagest/02-thumb.webp",
+        "width": 1448,
+        "height": 1086
+      },
+      {
+        "src": "assets/projects/polpagest/03.webp",
+        "thumb": "assets/projects/polpagest/03-thumb.webp",
+        "width": 1448,
+        "height": 1086
+      },
+      {
+        "src": "assets/projects/polpagest/04.webp",
+        "thumb": "assets/projects/polpagest/04-thumb.webp",
+        "width": 1448,
+        "height": 1086
+      },
+      {
+        "src": "assets/projects/polpagest/05.webp",
+        "thumb": "assets/projects/polpagest/05-thumb.webp",
+        "width": 1448,
+        "height": 1086
+      },
+      {
+        "src": "assets/projects/polpagest/06.webp",
+        "thumb": "assets/projects/polpagest/06-thumb.webp",
+        "width": 1448,
+        "height": 1086
+      }
+    ]
+  },
+  {
+    "name": "Gênesis Solar",
+    "slug": "genesissolar",
+    "description": "Landing page institucional e comercial criada para apresentar os serviços da Gênesis Solar e transformar visitas em pedidos de orçamento. A página combina uma proposta de valor direta, provas de experiência e chamadas para falar com a equipe.\n\nO fluxo conduz o visitante da explicação dos benefícios e soluções fotovoltaicas até uma simulação inicial. O formulário reúne os dados necessários para preparar uma proposta personalizada e continuar o atendimento pelo WhatsApp.\n\nO conteúdo também destaca instalações realizadas, etapas do serviço, depoimentos, localização e contato, com comunicação direcionada a Jales, São José do Rio Preto e região.",
+    "images": [
+      {
+        "src": "assets/projects/genesissolar/01.webp",
+        "thumb": "assets/projects/genesissolar/01-thumb.webp",
+        "width": 1368,
+        "height": 768,
+        "source": "https://genesissolarbr.com.br/#hero"
+      },
+      {
+        "src": "assets/projects/genesissolar/02.webp",
+        "thumb": "assets/projects/genesissolar/02-thumb.webp",
+        "width": 1368,
+        "height": 768,
+        "source": "https://genesissolarbr.com.br/#simulacao"
+      },
+      {
+        "src": "assets/projects/genesissolar/03.webp",
+        "thumb": "assets/projects/genesissolar/03-thumb.webp",
+        "width": 1368,
+        "height": 768,
+        "source": "https://genesissolarbr.com.br/#projetos"
       }
     ]
   }

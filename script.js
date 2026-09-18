@@ -1,11 +1,23 @@
 const root = document.documentElement;
-const motion = document.querySelector('#motion');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-let paused = false;
 let scheduled = false;
 const projectSections = [...document.querySelectorAll('.project-section')];
 const movingElements = [...document.querySelectorAll('.magnetic')];
-const allowed = () => !paused && !reduced.matches;
+const allowed = () => !reduced.matches;
+const notebookVideo = document.querySelector('.notebook-home-video');
+function syncNotebookVideo() {
+  if (!notebookVideo) return;
+  if (reduced.matches) {
+    const showFinalFrame = () => { notebookVideo.currentTime = Math.max(0, notebookVideo.duration - .05); notebookVideo.pause(); };
+    notebookVideo.readyState ? showFinalFrame() : notebookVideo.addEventListener('loadedmetadata', showFinalFrame, { once:true });
+    return;
+  }
+  if (document.hidden) notebookVideo.pause();
+  else if (!notebookVideo.ended) notebookVideo.play().catch(() => {});
+}
+reduced.addEventListener('change',syncNotebookVideo);
+document.addEventListener('visibilitychange',syncNotebookVideo);
+syncNotebookVideo();
 function renderScroll() {
   scheduled = false;
   const max = root.scrollHeight - innerHeight;
@@ -22,12 +34,6 @@ function renderScroll() {
 function requestRender() { if (!scheduled) { scheduled = true; requestAnimationFrame(renderScroll); } }
 function updateMotion() {
   root.classList.toggle('paused', !allowed());
-  motion.textContent = allowed() ? 'Ⅱ' : '▷';
-  motion.setAttribute('aria-pressed', String(!allowed()));
-  const label = reduced.matches ? 'Movimento reduzido ativo' : paused ? 'Retomar animações' : 'Pausar animações';
-  motion.setAttribute('aria-label',label);
-  motion.title = label;
-  motion.disabled = reduced.matches;
   if (!allowed()) {
     document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
     movingElements.forEach(el=>el.style.transform='');
@@ -35,7 +41,6 @@ function updateMotion() {
   }
   requestRender();
 }
-motion.addEventListener('click',()=>{paused=!paused; updateMotion();});
 reduced.addEventListener('change',updateMotion);
 addEventListener('scroll',requestRender,{passive:true});
 addEventListener('resize',requestRender);
@@ -76,6 +81,7 @@ function renderGallery(index, position) {
   const dialog = document.querySelector(`#case-${index}`);
   const main = dialog.querySelector('[data-main-image]');
   main.src=image.src;
+  main.width=image.width; main.height=image.height;
   main.alt=`${project.name} — ${image.caption}`;
   dialog.querySelector('.gallery-caption').textContent=image.caption;
   dialog.querySelector('.gallery-counter').textContent=`${current+1} / ${project.images.length}`;
@@ -85,7 +91,9 @@ function renderGallery(index, position) {
 function openCase(index) {
   activeCase=index;
   renderGallery(index,positions.get(index)??galleries[index].cover);
-  document.querySelector(`#case-${index}`).showModal();
+  const dialog = document.querySelector(`#case-${index}`);
+  dialog.showModal();
+  dialog.scrollTop = 0;
 }
 function stepImage(step) { renderGallery(activeCase,(positions.get(activeCase)||0)+step); }
 function renderViewer() {
@@ -168,17 +176,63 @@ document.querySelectorAll('[data-deck]').forEach(deck=>{
     current=(index+panels.length)%panels.length;
     panels.forEach((panel,i)=>{panel.hidden=i!==current;});
     buttons.forEach((button,i)=>button.setAttribute('aria-current',String(i===current)));
-    if(announce)deck.querySelector('[data-status]').textContent=`${deck.dataset.deck}: página ${current+1} de ${panels.length}`;
+    if(announce)deck.querySelector('[data-status]').textContent=buttons.length ? `${deck.dataset.deck}: página ${current+1} de ${panels.length}` : panels[current].querySelector('.review-bottom').textContent.trim();
     requestRender();
   };
   buttons.forEach((button,i)=>button.addEventListener('click',()=>show(i)));
   deck.querySelector('[data-prev]').addEventListener('click',()=>show(current-1));
   deck.querySelector('[data-next]').addEventListener('click',()=>show(current+1));
-  deck.querySelector('.deck-pages').addEventListener('keydown',event=>{
+  deck.querySelector('.deck-controls').addEventListener('keydown',event=>{
     if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
     event.preventDefault();
     show(event.key==='Home'?0:event.key==='End'?panels.length-1:current+(event.key==='ArrowRight'?1:-1));
-    buttons[current].focus();
+    buttons[current]?.focus();
   });
   deck.classList.add('deck-ready');show(0,false);
+});
+
+const contactForm = document.querySelector('#contact-form');
+const contactStatus = document.querySelector('#contact-status');
+const emailFallback = document.querySelector('#contact-email-fallback');
+let sendingContact = false;
+function contactPayload() {
+  return Object.fromEntries(new FormData(contactForm));
+}
+function updateEmailFallback() {
+  const data = contactPayload();
+  emailFallback.href = `mailto:404devsoficial@gmail.com?subject=${encodeURIComponent('Contato pelo site — '+(data.nome || 'Novo projeto'))}&body=${encodeURIComponent(`Nome: ${data.nome}\nE-mail: ${data.email}\n\n${data.mensagem}`)}`;
+}
+if (contactForm) contactForm.addEventListener('input', updateEmailFallback);
+if (contactForm) contactForm.addEventListener('submit', async event => {
+  event.preventDefault();
+  if (sendingContact || !contactForm.reportValidity()) return;
+  const button = contactForm.querySelector('[type="submit"]');
+  sendingContact = true; button.disabled = true; button.textContent = 'Enviando…';
+  contactForm.setAttribute('aria-busy', 'true');
+  contactStatus.textContent = 'Enviando sua mensagem…'; contactStatus.dataset.state = 'pending';
+  updateEmailFallback();
+  const submitted = contactPayload();
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 15000);
+  try {
+    const response = await fetch(contactForm.action, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(submitted), signal: controller.signal
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || result.ok !== true) throw new Error(result.erro || 'O envio pelo site está indisponível. Use o WhatsApp ou o link de e-mail abaixo.');
+    contactStatus.textContent = 'Mensagem enviada! Nossa equipe vai responder pelo e-mail informado.';
+    contactStatus.dataset.state = 'success';
+    // Keep anything the visitor typed while the request was in flight.
+    if (JSON.stringify(contactPayload()) === JSON.stringify(submitted)) contactForm.reset();
+    updateEmailFallback();
+  } catch (error) {
+    contactStatus.textContent = error.name === 'AbortError' || error instanceof TypeError
+      ? 'Não conseguimos confirmar o envio. Seu texto foi mantido. Tente novamente ou use o WhatsApp ou o link de e-mail.'
+      : error.message;
+    contactStatus.dataset.state = 'error';
+  } finally {
+    clearTimeout(timer); sendingContact = false; button.disabled = false;
+    button.textContent = 'Enviar mensagem ↗'; contactForm.removeAttribute('aria-busy');
+  }
 });
