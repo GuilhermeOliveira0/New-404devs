@@ -11,10 +11,8 @@ export const heroSection = `<section class="hero hero-showcase">
     </div>
     <div class="device-stage" role="img" aria-label="Demonstração de um sistema 404Devs no notebook e no celular, com indicadores e gráficos de gestão.">
       <div class="device-note" aria-hidden="true">Soluções reais<br>para o seu negócio <span>⤵</span></div>
-      <div class="photo-notebook" aria-hidden="true">
-        <img class="photo-notebook-base" src="assets/hero/notebook.webp" width="1448" height="1086" alt="" fetchpriority="high">
-        <div class="photo-notebook-lid"><div class="photo-notebook-shell"></div><img src="assets/hero/notebook.webp" width="1448" height="1086" alt=""></div>
-      </div>
+      <div class="notebook-scene-wrap" aria-hidden="true"><img class="notebook-scene-fallback" src="assets/hero/notebook.webp" width="1448" height="1086" alt=""><div id="notebook-scene"></div></div>
+      <script type="module" src="assets/hero/notebook-scene.js"></script>
       <div class="phone" aria-hidden="true"><div class="phone-screen"><div class="phone-top"><span>9:41</span><span>▰ ▪</span></div><div class="phone-notch"></div><div class="phone-content"><b class="phone-greeting">Olá, 404devs</b><p>Aqui está o resumo do seu negócio hoje.</p><div class="phone-metric"><small>Receita hoje</small><b>R$ 12.430</b><em>↗ 12%</em></div><div class="phone-metric"><small>Projetos</small><b>56</b><em>↗ 8%</em></div><div class="phone-metric"><small>Clientes</small><b>24</b><em>↗ 16%</em></div><div class="phone-mini-chart">${bars}</div></div><div class="phone-nav"><span>⌂<small>Início</small></span><span>▦<small>Projetos</small></span><span>♧<small>Clientes</small></span><span>···<small>Mais</small></span></div><div class="phone-home"></div></div></div>
     </div>
   </div>

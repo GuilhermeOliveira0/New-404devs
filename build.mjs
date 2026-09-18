@@ -1,7 +1,9 @@
 import fs from 'node:fs';
+import { buildSync } from 'esbuild';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 const content = JSON.parse(fs.readFileSync(new URL('content/pt-BR.json', import.meta.url), 'utf8'));
+buildSync({entryPoints:[fileURLToPath(new URL('src/notebook-scene.jsx',import.meta.url))],outfile:fileURLToPath(new URL('assets/hero/notebook-scene.js',import.meta.url)),bundle:true,minify:true,format:'esm',target:'es2020',define:{'process.env.NODE_ENV':'"production"'},legalComments:'inline'});
 const esc = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 import { projects, cards, dialogs, filters } from './portfolio.mjs';
 import { clientSections } from './client-sections.mjs';
@@ -36,7 +38,7 @@ fs.cpSync(path.join(projectRoot, 'assets'), path.join(output, 'assets'), {
   filter: source => {
     const stat = fs.lstatSync(source);
     if (stat.isSymbolicLink()) throw new Error('Public assets cannot be symbolic links');
-    return !path.basename(source).startsWith('.') && (stat.isDirectory() || /\.(webp|png|jpg|jpeg|svg|ico|woff2?|mp4)$/i.test(source));
+    return !path.basename(source).startsWith('.') && (stat.isDirectory() || path.resolve(source) === path.join(projectRoot,'assets','hero','notebook-scene.js') || /\.(webp|png|jpg|jpeg|svg|ico|woff2?|mp4)$/i.test(source));
   }
 });
 console.log(`Protótipo gerado com ${projects.length} projetos e ${projects.reduce((total,p)=>total+p.images.length,0)} imagens.`);

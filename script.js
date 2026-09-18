@@ -4,11 +4,6 @@ let scheduled = false;
 const projectSections = [...document.querySelectorAll('.project-section')];
 const movingElements = [...document.querySelectorAll('.magnetic')];
 const allowed = () => !reduced.matches;
-const notebookImage = document.querySelector('.photo-notebook-base');
-if (notebookImage) {
-  // Start the hinge animation only once the supplied photograph is decoded.
-  notebookImage.decode().then(() => notebookImage.parentElement.classList.add('notebook-ready')).catch(() => {});
-}
 function renderScroll() {
   scheduled = false;
   const max = root.scrollHeight - innerHeight;

@@ -8,6 +8,9 @@ test('production output contains only public assets and complete project galleri
   execFileSync(process.execPath, ['build.mjs']);
   assert.deepEqual(fs.readdirSync('dist').sort(), ['assets','index.html','robots.txt','script.js','sitemap.xml','style.css']);
   const html = fs.readFileSync('dist/index.html', 'utf8');
+  for (const [,src] of html.matchAll(/<script[^>]+src="([^"?]+)(?:\?[^\"]*)?"/g)) {
+    assert.ok(fs.existsSync(path.join('dist',src)), `missing public script ${src}`);
+  }
   const gallery = JSON.parse(html.match(/id="gallery-data">([\s\S]*?)<\/script>/)[1]);
   assert.equal(gallery.length, 10);
   for (const project of gallery) for (const img of project.images) {
