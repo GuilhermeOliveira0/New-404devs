@@ -4,6 +4,20 @@ let scheduled = false;
 const projectSections = [...document.querySelectorAll('.project-section')];
 const movingElements = [...document.querySelectorAll('.magnetic')];
 const allowed = () => !reduced.matches;
+const notebookVideo = document.querySelector('.notebook-home-video');
+function syncNotebookVideo() {
+  if (!notebookVideo) return;
+  if (reduced.matches) {
+    const showFinalFrame = () => { notebookVideo.currentTime = Math.max(0, notebookVideo.duration - .05); notebookVideo.pause(); };
+    notebookVideo.readyState ? showFinalFrame() : notebookVideo.addEventListener('loadedmetadata', showFinalFrame, { once:true });
+    return;
+  }
+  if (document.hidden) notebookVideo.pause();
+  else if (!notebookVideo.ended) notebookVideo.play().catch(() => {});
+}
+reduced.addEventListener('change',syncNotebookVideo);
+document.addEventListener('visibilitychange',syncNotebookVideo);
+syncNotebookVideo();
 function renderScroll() {
   scheduled = false;
   const max = root.scrollHeight - innerHeight;

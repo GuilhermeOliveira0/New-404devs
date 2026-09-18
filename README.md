@@ -21,7 +21,7 @@ Depois, acesse `http://127.0.0.1:4040/`.
 - `portfolio-sources.json`: inventário das imagens e fontes dos projetos.
 - `style.css`: layout responsivo, tipografia e animações.
 - `script.js`: navegação, filtros, galerias e paginação.
-- `src/notebook-scene.jsx`: notebook 3D do arquivo fornecido, adaptado para a home. O build compila React e a cena em `assets/hero/notebook-scene.js`, sem scripts externos ou painel de edição.
+- `assets/hero/notebook-home.mp4`: animação do notebook usada na abertura da home.
 - `assets/projects/`: 40 imagens dos dez projetos, além das miniaturas.
 - `dist/`: arquivos públicos gerados pelo build e publicados na Vercel.
 - `content/pt-BR.json`: conteúdo institucional e avaliações.
